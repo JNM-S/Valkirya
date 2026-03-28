@@ -12,6 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Valkirya">
         <activity
+            android:name=".Recuperacion_contrasenas"/>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

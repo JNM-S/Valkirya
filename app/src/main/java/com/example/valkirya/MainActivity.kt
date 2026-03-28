@@ -8,6 +8,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.content.ContextCompat
 import android.text.SpannableString
 import android.text.Spanned
+import android.content.Intent
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
@@ -42,6 +43,14 @@ class MainActivity : AppCompatActivity() {
             it.text = spannable
             it.movementMethod = LinkMovementMethod.getInstance()
         }
+
+        val olvido = findViewById<TextView>(R.id.txt_olvido_contraseña)
+
+        olvido.setOnClickListener {
+            val intent = Intent(this, Recuperacion_contrasenas::class.java)
+            startActivity(intent)
+        }
+
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -8,300 +9,309 @@
     android:background="#101322"
     tools:context=".MainActivity" >
 
-    <ImageView
-        android:id="@+id/Logo_Inicio"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="37dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/icono_inicio_sesion" />
-
-    <TextView
-        android:id="@+id/Nombre_Valkirya"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="117sp"
-        android:text="VALKYRIA"
-        android:textColor="@color/blanco"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/Acceso_seguro_Inicio"
-        android:layout_width="155.84sp"
-        android:layout_height="32sp"
-        android:layout_marginTop="150dp"
-        android:text="Acceso Seguro"
-        android:gravity="center"
-        android:textSize="16sp"
-        android:textColor="@color/gris_1"
-        android:textStyle="normal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/Correo_Electronico_Inicio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="230dp"
-        android:text="Dirección de Correo Electronico"
-        android:textSize="16sp"
-        android:textColor="@color/gris_2"
-        android:fontFamily="@font/inter_font"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/entrada_email"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="24dp"
-        app:boxBackgroundColor="#1A2238"
-        app:boxBackgroundMode="filled"
-        app:boxCornerRadiusBottomEnd="16dp"
-        app:boxCornerRadiusBottomStart="16dp"
-        app:boxStrokeWidth="0dp"
-        app:boxStrokeColor="@android:color/transparent"
-
-        app:boxCornerRadiusTopEnd="16dp"
-        app:boxCornerRadiusTopStart="16dp"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Correo_Electronico_Inicio"
-        app:startIconDrawable="@drawable/email"
-        app:startIconTint="@color/gris_1">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:background="@null"
-            android:hint="name@company.com"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#8A94A6" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:id="@+id/Contrasena_Inicio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="130dp"
-        android:fontFamily="@font/inter_font"
-        android:text="Contraseña"
-        android:textColor="@color/gris_2"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.049"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/Correo_Electronico_Inicio"/>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/entrada_contrasena"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="24dp"
-        app:boxBackgroundColor="#1A2238"
-        app:boxBackgroundMode="filled"
-        app:boxCornerRadiusBottomEnd="16dp"
-        app:boxCornerRadiusBottomStart="16dp"
-
-        app:boxCornerRadiusTopEnd="16dp"
-        app:boxCornerRadiusTopStart="16dp"
-        app:boxStrokeColor="@android:color/transparent"
-
-        app:boxStrokeWidth="0dp"
-        app:boxStrokeWidthFocused="0dp"
-
-        app:endIconMode="password_toggle"
-        app:endIconTint="@color/gris_1"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Contrasena_Inicio"
-        app:startIconDrawable="@drawable/lock"
-        app:startIconTint="@color/gris_1">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:background="@null"
-            android:hint="••••••••"
-            android:inputType="textPassword"
-            android:paddingStart="8dp"
-            android:textColor="@color/blanco"
-            android:textColorHint="@color/gris_1" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:id="@+id/txt_olvido_contraseña"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="¿Olvidaste tu contraseña?"
-        android:fontFamily="@font/inter_font"
-        android:textColor="@color/azul_1"
-        android:textSize="14sp"
-        android:clickable="true"
-        android:focusable="true"
-        android:foreground="?attr/selectableItemBackgroundBorderless"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.904"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/entrada_contrasena" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_ingresar"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:text="Ingresar"
-        android:textColor="@color/blanco"
-        android:textSize="18sp"
-        android:fontFamily="@font/inter_font"
-        android:textStyle="bold"
-        android:clickable="true"
-        android:focusable="true"
-        android:foreground="?attr/selectableItemBackgroundBorderless"
-        android:background="@drawable/bg_boton_ingresar"
-
-        app:backgroundTint="@null"
-        app:rippleColor="@android:color/transparent"
-
-        app:layout_constraintTop_toBottomOf="@id/txt_olvido_contraseña"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"/>
-
-    <View
-        android:id="@+id/linea_izquierda"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:background="@color/gris_1"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/texto_continuar"
-        app:layout_constraintTop_toTopOf="@id/texto_continuar"
-        app:layout_constraintBottom_toBottomOf="@id/texto_continuar"
-
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="8dp"/>
-
-    <TextView
-        android:id="@+id/texto_continuar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="CONTINUAR CON"
-        android:textColor="@color/gris_1"
-        android:textSize="14sp"
-        android:letterSpacing="0.1"
-        android:fontFamily="@font/inter_font"
-
-
-        app:layout_constraintTop_toBottomOf="@id/btn_ingresar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-
-        android:layout_marginTop="30dp"/>
-
-    <View
-        android:id="@+id/linea_derecha"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:background="@color/gris_1"
-
-        app:layout_constraintStart_toEndOf="@id/texto_continuar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/texto_continuar"
-        app:layout_constraintBottom_toBottomOf="@id/texto_continuar"
-
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="24dp"/>
-
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/btn_biometria"
-        android:layout_width="0dp"
-        android:layout_height="70dp"
-        android:background="@drawable/gb_boton_biometrico"
-        android:clickable="true"
-        android:focusable="true"
-        android:foreground="?attr/selectableItemBackgroundBorderless"
-
-        app:layout_constraintTop_toBottomOf="@id/texto_continuar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-
-        android:layout_marginTop="30dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="32dp">
 
 
         <ImageView
-            android:id="@+id/icono_biometria"
-            android:layout_width="28dp"
-            android:layout_height="31dp"
-            android:layout_marginStart="24dp"
-            android:src="@drawable/fingerprint"
-            app:tint="@color/azul_1"
-
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/Logo_Inicio"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="37dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-
-            app:layout_constraintTop_toTopOf="parent" />
-
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/icono_inicio_sesion" />
 
         <TextView
-            android:id="@+id/texto_biometria"
+            android:id="@+id/Nombre_Valkirya"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="117dp"
+            android:fontFamily="@font/inter_font"
+            android:text="Valkirya"
+            android:textColor="@color/blanco"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/Acceso_seguro_Inicio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="150dp"
             android:fontFamily="@font/inter_font"
             android:gravity="center"
-            android:text="Ingresa con\nBiometria"
-            android:textColor="@color/blanco"
+            android:text="Acceso Seguro"
+            android:textColor="@color/gris_1"
             android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.403"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            app:layout_constraintStart_toEndOf="@id/icono_biometria"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.518" />
+        <TextView
+            android:id="@+id/Correo_Electronico_Inicio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/inter_font"
+            android:text="Correo Electronico"
+            android:textColor="@color/gris_2"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Acceso_seguro_Inicio" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/entrada_email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="24dp"
+            app:boxBackgroundColor="#1A2238"
+            app:boxBackgroundMode="filled"
+            app:boxCornerRadiusBottomEnd="16dp"
+            app:boxCornerRadiusBottomStart="16dp"
+            app:boxCornerRadiusTopEnd="16dp"
+            app:boxCornerRadiusTopStart="16dp"
+
+            app:boxStrokeColor="@android:color/transparent"
+            app:boxStrokeWidth="0dp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/Correo_Electronico_Inicio"
+            app:startIconDrawable="@drawable/email"
+            app:startIconTint="@color/gris_1">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="@null"
+                android:hint="name@company.com"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#8A94A6" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/Contrasena_Inicio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/inter_font"
+            android:text="Contraseña"
+            android:textColor="@color/gris_2"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.083"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/entrada_email" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/entrada_contrasena"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="24dp"
+            app:boxBackgroundColor="#1A2238"
+            app:boxBackgroundMode="filled"
+            app:boxCornerRadiusBottomEnd="16dp"
+            app:boxCornerRadiusBottomStart="16dp"
+
+            app:boxCornerRadiusTopEnd="16dp"
+            app:boxCornerRadiusTopStart="16dp"
+            app:boxStrokeColor="@android:color/transparent"
+
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+
+            app:endIconMode="password_toggle"
+            app:endIconTint="@color/gris_1"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/Contrasena_Inicio"
+            app:startIconDrawable="@drawable/lock"
+            app:startIconTint="@color/gris_1">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="@null"
+                android:hint="••••••••"
+                android:inputType="textPassword"
+                android:paddingStart="8dp"
+                android:textColor="@color/blanco"
+                android:textColorHint="@color/gris_1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/txt_olvido_contraseña"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="@font/inter_font"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:text="¿Olvidaste tu contraseña?"
+            android:textColor="@color/azul_1"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.896"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/entrada_contrasena" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_ingresar"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/bg_boton_ingresar"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="@font/inter_font"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:text="Ingresar"
+
+            android:textColor="@color/blanco"
+            android:textSize="18sp"
+
+            android:textStyle="bold"
+            app:backgroundTint="@null"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_olvido_contraseña"
+            app:rippleColor="@android:color/transparent" />
+
+        <View
+            android:id="@+id/linea_izquierda"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="24dp"
+
+            android:layout_marginEnd="8dp"
+            android:background="@color/gris_1"
+            app:layout_constraintBottom_toBottomOf="@id/texto_continuar"
+            app:layout_constraintEnd_toStartOf="@id/texto_continuar"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/texto_continuar" />
+
+        <TextView
+            android:id="@+id/texto_continuar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/inter_font"
+            android:letterSpacing="0.1"
+            android:text="CONTINUAR CON"
+            android:textColor="@color/gris_1"
+
+
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toBottomOf="@id/btn_ingresar" />
+
+        <View
+            android:id="@+id/linea_derecha"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="8dp"
+
+            android:layout_marginEnd="24dp"
+            android:background="@color/gris_1"
+            app:layout_constraintBottom_toBottomOf="@id/texto_continuar"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintStart_toEndOf="@id/texto_continuar"
+            app:layout_constraintTop_toTopOf="@id/texto_continuar" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/btn_biometria"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/gb_boton_biometrico"
+
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/texto_continuar">
+
+
+            <ImageView
+                android:id="@+id/icono_biometria"
+                android:layout_width="28dp"
+                android:layout_height="31dp"
+                android:layout_marginStart="24dp"
+                android:src="@drawable/fingerprint"
+                app:layout_constraintBottom_toBottomOf="parent"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+
+                app:tint="@color/azul_1" />
+
+
+            <TextView
+                android:id="@+id/texto_biometria"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_font"
+                android:gravity="center"
+                android:text="Ingresa con\nBiometria"
+                android:textColor="@color/blanco"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.403"
+
+                app:layout_constraintStart_toEndOf="@id/icono_biometria"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.518" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/txt_registro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/inter_font"
+            android:text="¿Nuevo en Valkyria? Crea una cuenta"
+            android:textColor="@color/gris_1"
+
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toBottomOf="@id/btn_biometria" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
-    <TextView
-        android:id="@+id/txt_registro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="¿Nuevo en Valkyria? Crea una cuenta"
-        android:textColor="@color/gris_1"
-        android:textSize="14sp"
-        android:fontFamily="@font/inter_font"
-
-        app:layout_constraintTop_toBottomOf="@id/btn_biometria"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-
-        android:layout_marginTop="30dp"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
 
