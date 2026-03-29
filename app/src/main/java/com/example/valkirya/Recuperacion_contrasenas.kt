@@ -2,12 +2,19 @@ package com.example.valkirya
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 
 class Recuperacion_contrasenas : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +31,38 @@ class Recuperacion_contrasenas : AppCompatActivity() {
         volver.setOnClickListener {
             finish()
         }
+
+
+        val email2 = findViewById<TextInputEditText>(R.id.entrada_email_edit_r_c)
+        val boton2 = findViewById<MaterialButton>(R.id.btn_enviar_intrucciones)
+        val layoutEmail2 = findViewById<TextInputLayout>(R.id.layout_email_r_c)
+
+        boton2.setOnClickListener {
+            val email2Text = email2.text.toString().trim()
+            if (email2Text.isEmpty()) {
+                if (email2Text.isEmpty()) {
+                    layoutEmail2.error = "Ingresa tu correo"
+                }
+            } else {
+                AlertDialog.Builder(this)
+                    .setTitle("Recuperación de contraseña")
+                    .setMessage("Te hemos enviado un correo para recuperar tu contraseña. Revisa tu bandeja de entrada o de spam")
+                    .setCancelable(false)
+                    .setPositiveButton("Aceptar"){dialog, _ ->
+                        dialog.dismiss()
+                    }
+                    .show()
+            }
+        }
+
+        email2.addTextChangedListener(object : TextWatcher{
+            override fun afterTextChanged(p0: Editable?) {
+                layoutEmail2.error = null
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())

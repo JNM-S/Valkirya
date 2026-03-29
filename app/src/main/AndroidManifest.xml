@@ -12,7 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Valkirya">
         <activity
-            android:name=".Recuperacion_contrasenas"/>
+            android:name=".Baul_contrasenas"
+            android:exported="false" />
+        <activity
+            android:name=".Recuperacion_contrasenas"
+            android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">

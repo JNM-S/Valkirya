@@ -7,6 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#101322"
+    android:fillViewport="true"
     tools:context=".MainActivity" >
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,7 +20,7 @@
             android:id="@+id/Logo_Inicio"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_marginTop="37dp"
+            android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -29,7 +30,7 @@
             android:id="@+id/Nombre_Valkirya"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="117dp"
+            android:layout_marginTop="90dp"
             android:fontFamily="@font/inter_font"
             android:text="Valkirya"
             android:textColor="@color/blanco"
@@ -43,7 +44,7 @@
             android:id="@+id/Acceso_seguro_Inicio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="130dp"
             android:fontFamily="@font/inter_font"
             android:gravity="center"
             android:text="Acceso Seguro"
@@ -69,7 +70,7 @@
             app:layout_constraintTop_toBottomOf="@+id/Acceso_seguro_Inicio" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/entrada_email"
+            android:id="@+id/layout_email"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -80,24 +81,27 @@
             app:boxBackgroundMode="filled"
             app:boxCornerRadiusBottomEnd="16dp"
             app:boxCornerRadiusBottomStart="16dp"
+
             app:boxCornerRadiusTopEnd="16dp"
             app:boxCornerRadiusTopStart="16dp"
-
             app:boxStrokeColor="@android:color/transparent"
+
             app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
 
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.05"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/Correo_Electronico_Inicio"
             app:startIconDrawable="@drawable/email"
             app:startIconTint="@color/gris_1">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/entrada_email_edit"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:background="@null"
-                android:hint="name@company.com"
+                android:hint="name@Valkirya.com"
                 android:textColor="#FFFFFF"
                 android:textColorHint="#8A94A6" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -106,7 +110,7 @@
             android:id="@+id/Contrasena_Inicio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="25dp"
             android:fontFamily="@font/inter_font"
             android:text="Contraseña"
             android:textColor="@color/gris_2"
@@ -114,10 +118,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.083"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/entrada_email" />
+            app:layout_constraintTop_toBottomOf="@+id/layout_email" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/entrada_contrasena"
+            android:id="@+id/layout_contrasena"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -147,6 +151,7 @@
             app:startIconTint="@color/gris_1">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/entrada_contrasena_edit"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:background="@null"
@@ -172,7 +177,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.896"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/entrada_contrasena" />
+            app:layout_constraintTop_toBottomOf="@+id/layout_contrasena" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_ingresar"

@@ -16,13 +16,17 @@ import android.text.TextPaint
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
+import android.text.TextWatcher
+import android.text.Editable
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-
-        setContentView(R.layout.activity_main) // 👈 PRIMERO ESTO
+        setContentView(R.layout.activity_main)
 
         val texto = findViewById<TextView>(R.id.txt_registro)
 
@@ -51,6 +55,48 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val email = findViewById<TextInputEditText>(R.id.entrada_email_edit)
+        val password = findViewById<TextInputEditText>(R.id.entrada_contrasena_edit)
+        val boton = findViewById<MaterialButton>(R.id.btn_ingresar)
+        val layoutPassword = findViewById<TextInputLayout>(R.id.layout_contrasena)
+        val layoutEmail = findViewById<TextInputLayout>(R.id.layout_email)
+
+        email.addTextChangedListener(object : TextWatcher{
+            override fun afterTextChanged(p0: Editable?) {
+                layoutEmail.error = null
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
+
+        password.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                layoutPassword.error = null
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
+
+
+        boton.setOnClickListener {
+            val emailText = email.text.toString().trim()
+            val passText = password.text.toString().trim()
+
+            if (emailText.isEmpty() || passText.isEmpty()) {
+                if (emailText.isEmpty()) {
+                    layoutEmail.error = "Ingresa tu correo"
+                }
+
+                if (passText.isEmpty()) {
+                    layoutPassword.error = "Ingresa tu contraseña"
+                }
+            } else {
+                val intent = Intent(this, Baul_contrasenas::class.java)
+                startActivity(intent)
+            }
+        }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
