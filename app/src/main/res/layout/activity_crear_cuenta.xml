@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="12dp"
+    tools:context=".crearCuenta">
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#0B1220"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <ImageView
+                android:id="@+id/atras"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                app:srcCompat="@drawable/button" />
+
+            <TextView
+                android:id="@+id/crearCuenta"
+                android:layout_width="143dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="-30dp"
+                android:text="Crear cuenta"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imagen_cuenta"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="24dp"
+                android:tint="#3B82F6"
+                app:srcCompat="@drawable/cuenta" />
+
+            <TextView
+                android:id="@+id/UneteaValkyria"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Unete a Valkyria"
+                android:textColor="#9CA3AF"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/usuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Nombre usuario"
+                android:textColor="@android:color/white" />
+
+            <EditText
+                android:id="@+id/introducir_usuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#1F2937"
+                android:ems="10"
+                android:hint="Introduce tu usuario"
+                android:inputType="text"
+                android:padding="12dp"
+                android:textColor="#9CA3AF"
+                android:textColorHint="#9CA3AF" />
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Correo Electronico"
+                android:textColor="@android:color/white" />
+
+            <EditText
+                android:id="@+id/introducir_correo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#1F2937"
+                android:ems="10"
+                android:hint="ejemplo@correo.com"
+                android:inputType="text"
+                android:padding="12dp"
+                android:textColorHint="#9CA3AF" />
+
+            <TextView
+                android:id="@+id/tel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Número de teléfono"
+                android:textColor="@android:color/white" />
+
+            <EditText
+                android:id="@+id/num_tel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#1F2937"
+                android:ems="10"
+                android:hint="+57 000 000 0000"
+                android:inputType="text"
+                android:textColorHint="#9CA3AF" />
+
+            <TextView
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Contraseña"
+                android:textColor="@android:color/white" />
+
+            <EditText
+                android:id="@+id/ingresar_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#1F2937"
+                android:ems="10"
+                android:hint="••••••••"
+                android:inputType="textPassword"
+                android:padding="12dp"
+                android:textColorHint="#9CA3AF" />
+
+            <TextView
+                android:id="@+id/pais"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Pais"
+                android:textColor="@android:color/white" />
+
+            <Spinner
+                android:id="@+id/escoger_pais"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:backgroundTint="#1F2937"
+                android:entries="@array/paises" />
+
+            <Button
+                android:id="@+id/registrar"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="24dp"
+                android:backgroundTint="#2B62BF"
+                android:text="Registrarse"
+                android:textColor="@android:color/white"
+                app:cornerRadius="16dp" />
+
+            <TextView
+                android:id="@+id/text_legal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:text="@string/texto_legal"
+                android:textColor="#6B7280"
+                android:textSize="11dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
