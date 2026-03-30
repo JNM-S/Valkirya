@@ -1,176 +1,411 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="12dp"
+    android:background="#101322"
+    android:descendantFocusability="beforeDescendants"
     tools:context=".crearCuenta">
 
-    <ScrollView
-        android:id="@+id/scrollView2"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#0B1220"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp">
+        android:layout_height="wrap_content"
+        android:paddingBottom="32dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+
+        <TextView
+            android:id="@+id/crearCuenta"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="24dp">
+            android:layout_marginTop="10dp"
+            android:text="Crear cuenta"
+            android:textColor="@color/blanco"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/atras"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                app:srcCompat="@drawable/button" />
+        <ImageView
+            android:id="@+id/atras"
+            android:layout_width="38dp"
+            android:layout_height="41dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="3dp"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/boton_back" />
 
-            <TextView
-                android:id="@+id/crearCuenta"
-                android:layout_width="143dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="-30dp"
-                android:text="Crear cuenta"
-                android:textColor="@android:color/white"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+        <ImageView
+            android:id="@+id/imagen_cuenta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/crearCuenta"
+            app:srcCompat="@drawable/cuenta" />
 
-            <ImageView
-                android:id="@+id/imagen_cuenta"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="24dp"
-                android:tint="#3B82F6"
-                app:srcCompat="@drawable/cuenta" />
+        <TextView
+            android:id="@+id/UneteaValkyria"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="únete a Valkyria y comienza tu experiencia"
+            android:textColor="@color/gris_1"
+            android:fontFamily="@font/inter_font"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.511"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imagen_cuenta" />/>
 
-            <TextView
-                android:id="@+id/UneteaValkyria"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Unete a Valkyria"
-                android:textColor="#9CA3AF"
-                android:textSize="12sp" />
+        <TextView
+            android:id="@+id/nombre_usuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/inter_font"
+            android:text="Nombre de usuario"
+            android:textColor="@color/gris_2"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/UneteaValkyria" />
 
-            <TextView
-                android:id="@+id/usuario"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="Nombre usuario"
-                android:textColor="@android:color/white" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_nombre_usuario"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
 
-            <EditText
-                android:id="@+id/introducir_usuario"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#1F2937"
-                android:ems="10"
-                android:hint="Introduce tu usuario"
-                android:inputType="text"
-                android:padding="12dp"
-                android:textColor="#9CA3AF"
-                android:textColorHint="#9CA3AF" />
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="24dp"
+            app:boxBackgroundColor="#1A2238"
+            app:boxBackgroundMode="filled"
+            app:boxCornerRadiusBottomEnd="16dp"
+            app:boxCornerRadiusBottomStart="16dp"
 
-            <TextView
-                android:id="@+id/email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="Correo Electronico"
-                android:textColor="@android:color/white" />
+            app:boxCornerRadiusTopEnd="16dp"
+            app:boxCornerRadiusTopStart="16dp"
+            app:boxStrokeColor="@android:color/transparent"
 
-            <EditText
-                android:id="@+id/introducir_correo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#1F2937"
-                android:ems="10"
-                android:hint="ejemplo@correo.com"
-                android:inputType="text"
-                android:padding="12dp"
-                android:textColorHint="#9CA3AF" />
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
 
-            <TextView
-                android:id="@+id/tel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="Número de teléfono"
-                android:textColor="@android:color/white" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nombre_usuario"
+            app:startIconDrawable="@drawable/person"
+            app:startIconTint="@color/gris_1">
 
-            <EditText
-                android:id="@+id/num_tel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#1F2937"
-                android:ems="10"
-                android:hint="+57 000 000 0000"
-                android:inputType="text"
-                android:textColorHint="#9CA3AF" />
-
-            <TextView
-                android:id="@+id/password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="Contraseña"
-                android:textColor="@android:color/white" />
-
-            <EditText
-                android:id="@+id/ingresar_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#1F2937"
-                android:ems="10"
-                android:hint="••••••••"
-                android:inputType="textPassword"
-                android:padding="12dp"
-                android:textColorHint="#9CA3AF" />
-
-            <TextView
-                android:id="@+id/pais"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:text="Pais"
-                android:textColor="@android:color/white" />
-
-            <Spinner
-                android:id="@+id/escoger_pais"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="12dp"
-                android:backgroundTint="#1F2937"
-                android:entries="@array/paises" />
-
-            <Button
-                android:id="@+id/registrar"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/entrada_usuario"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginTop="24dp"
-                android:backgroundTint="#2B62BF"
-                android:text="Registrarse"
-                android:textColor="@android:color/white"
-                app:cornerRadius="16dp" />
+                android:background="@null"
+                android:hint="Introduce tu usuario"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#8A94A6" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:id="@+id/text_legal"
+        <TextView
+            android:id="@+id/Correo_Electronico_c_c"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/inter_font"
+            android:text="Correo Electronico"
+            android:textColor="@color/gris_2"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_nombre_usuario" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_email_c_c"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="24dp"
+            app:boxBackgroundColor="#1A2238"
+            app:boxBackgroundMode="filled"
+            app:boxCornerRadiusBottomEnd="16dp"
+            app:boxCornerRadiusBottomStart="16dp"
+
+            app:boxCornerRadiusTopEnd="16dp"
+            app:boxCornerRadiusTopStart="16dp"
+            app:boxStrokeColor="@android:color/transparent"
+
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/Correo_Electronico_c_c"
+            app:startIconDrawable="@drawable/email"
+            app:startIconTint="@color/gris_1">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/entrada_email_edit_c_c"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="16dp"
-                android:gravity="center"
-                android:text="@string/texto_legal"
-                android:textColor="#6B7280"
-                android:textSize="11dp" />
+                android:layout_height="55dp"
+                android:background="@null"
+                android:hint="name@Valkirya.com"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#8A94A6" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        </LinearLayout>
-    </ScrollView>
+        <TextView
+            android:id="@+id/numero_telefono"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/inter_font"
+            android:text="Número de teléfono"
+            android:textColor="@color/gris_2"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_email_c_c" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_numero_telefono"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="24dp"
+            app:boxBackgroundColor="#1A2238"
+            app:boxBackgroundMode="filled"
+            app:boxCornerRadiusBottomEnd="16dp"
+            app:boxCornerRadiusBottomStart="16dp"
+
+            app:boxCornerRadiusTopEnd="16dp"
+            app:boxCornerRadiusTopStart="16dp"
+            app:boxStrokeColor="@android:color/transparent"
+
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+
+            app:layout_constraintTop_toBottomOf="@id/numero_telefono"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.05">
+
+            <LinearLayout
+                android:id="@+id/linear_numero"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/bg_entrada_redondeado"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                app:boxBackgroundMode="none">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/phone"
+                    app:tint="@color/gris_1"
+                    android:layout_marginEnd="10dp"/>
+
+
+                <AutoCompleteTextView
+                    android:id="@+id/input_prefijo"
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:text="+57"
+                    android:textColor="@color/blanco"
+                    android:background="@null"
+                    android:inputType="none"/>
+
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="30dp"
+                    android:background="@color/gris_1"
+                    android:alpha="0.3"/>
+
+
+                <EditText
+                    android:id="@+id/entrada_telefono"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:hint="000 000 0000"
+                    android:textColor="@color/blanco"
+                    android:textColorHint="@color/gris_1"
+                    android:inputType="phone"
+                    android:background="@null"
+                    android:paddingStart="20dp"/>
+            </LinearLayout>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <TextView
+            android:id="@+id/Contrasena_c_c"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/inter_font"
+            android:text="Contraseña"
+            android:textColor="@color/gris_2"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.083"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_numero_telefono" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_contrasena_c_c"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="24dp"
+            app:boxBackgroundColor="#1A2238"
+            app:boxBackgroundMode="filled"
+            app:boxCornerRadiusBottomEnd="16dp"
+            app:boxCornerRadiusBottomStart="16dp"
+
+            app:boxCornerRadiusTopEnd="16dp"
+            app:boxCornerRadiusTopStart="16dp"
+            app:boxStrokeColor="@android:color/transparent"
+
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+
+            app:endIconMode="password_toggle"
+            app:endIconTint="@color/gris_1"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/Contrasena_c_c"
+            app:startIconDrawable="@drawable/lock"
+            app:startIconTint="@color/gris_1">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/entrada_contrasena_edit_c_c"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="@null"
+                android:hint="••••••••"
+                android:inputType="textPassword"
+                android:paddingStart="8dp"
+                android:textColor="@color/blanco"
+                android:textColorHint="@color/gris_1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/ic_pais"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/inter_font"
+            android:text="País"
+            android:textColor="@color/gris_2"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.083"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_contrasena_c_c" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_pais"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="10dp"
+
+            app:boxBackgroundMode="filled"
+            app:boxBackgroundColor="#1A2238"
+
+            app:boxCornerRadiusTopStart="16dp"
+            app:boxCornerRadiusTopEnd="16dp"
+            app:boxCornerRadiusBottomStart="16dp"
+            app:boxCornerRadiusBottomEnd="16dp"
+
+            app:boxStrokeWidth="0dp"
+            app:endIconMode="dropdown_menu"
+
+            app:startIconDrawable="@drawable/mundo"
+            app:startIconTint="@color/gris_1"
+
+            app:layout_constraintTop_toBottomOf="@id/ic_pais"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <AutoCompleteTextView
+                android:id="@+id/entrada_pais"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:hint="Selecciona tu país"
+                android:inputType="none"
+                android:textColor="@color/blanco"
+                android:textColorHint="@color/gris_1" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_registrar"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/bg_boton_ingresar"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="@font/inter_font"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:text="Regitrarse"
+
+            android:textColor="@color/blanco"
+            android:textSize="18sp"
+
+            android:textStyle="bold"
+            app:backgroundTint="@null"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_pais"
+            app:rippleColor="@android:color/transparent" />
+
+        <TextView
+            android:id="@+id/text_legal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="12dp"
+            android:text="Al registrarte, aceptas nuestros Términos de Servicio \ny \nPolítica de Privacidad."
+            android:textColor="@color/gris_1"
+            android:textSize="11sp"
+            android:gravity="center"
+            android:fontFamily="@font/inter_font"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.485"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_registrar" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -22,5 +22,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Valkirya"
+rootProject.name = "Valkyria"
 include(":app")

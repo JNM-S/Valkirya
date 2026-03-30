@@ -1,6 +1,5 @@
-package com.example.valkirya
+package com.example.valkyria
 
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -13,7 +12,6 @@ import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 
 class Recuperacion_contrasenas : AppCompatActivity() {
@@ -37,6 +35,15 @@ class Recuperacion_contrasenas : AppCompatActivity() {
         val boton2 = findViewById<MaterialButton>(R.id.btn_enviar_intrucciones)
         val layoutEmail2 = findViewById<TextInputLayout>(R.id.layout_email_r_c)
 
+        email2.addTextChangedListener(object : TextWatcher{
+            override fun afterTextChanged(p0: Editable?) {
+                layoutEmail2.error = null
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
+
         boton2.setOnClickListener {
             val email2Text = email2.text.toString().trim()
             if (email2Text.isEmpty()) {
@@ -55,14 +62,6 @@ class Recuperacion_contrasenas : AppCompatActivity() {
             }
         }
 
-        email2.addTextChangedListener(object : TextWatcher{
-            override fun afterTextChanged(p0: Editable?) {
-                layoutEmail2.error = null
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-        })
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())

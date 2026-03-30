@@ -1,13 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Valkyria</string>
-    <string-array name="paises">
-        <item>Colombia</item>
-        <item>Argentina</item>
-        <item>México</item>
-        <item>España</item>
-    </string-array>
-    <string name="texto_legal">
-    Al registrarte, aceptas nuestros
-    <font color="#3B82F6">Términos de Servicio y Política de Privacidad</font>.
-</string>
 </resources>

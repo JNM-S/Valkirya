@@ -1,4 +1,4 @@
-package com.example.valkirya
+package com.example.valkyria
 
 import org.junit.Test
 

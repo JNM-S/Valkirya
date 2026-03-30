@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Valkirya" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.Valkyria" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <item name="android:windowSoftInputMode">adjustResize</item>
         <item name="android:windowFullscreen">false</item>
@@ -8,5 +8,5 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.Valkirya" parent="Base.Theme.Valkirya" />
+    <style name="Theme.Valkyria" parent="Base.Theme.Valkyria" />
 </resources>

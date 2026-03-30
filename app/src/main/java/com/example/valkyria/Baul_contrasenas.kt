@@ -1,4 +1,4 @@
-package com.example.valkirya
+package com.example.valkyria
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge

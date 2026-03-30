@@ -1,4 +1,4 @@
-package com.example.valkirya
+package com.example.valkyria
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -10,12 +10,8 @@ import android.text.SpannableString
 import android.text.Spanned
 import android.content.Intent
 import android.text.method.LinkMovementMethod
-import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
-import android.text.TextPaint
-import android.view.View
 import android.widget.TextView
-import android.widget.Toast
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -28,25 +24,6 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
-        val texto = findViewById<TextView>(R.id.txt_registro)
-
-        val textoCompleto = "¿Nuevo en Valkyria? Crea una cuenta"
-        val spannable = SpannableString(textoCompleto)
-
-        val inicio = textoCompleto.indexOf("Crea una cuenta")
-        val fin = inicio + "Crea una cuenta".length
-
-        spannable.setSpan(
-            ForegroundColorSpan(ContextCompat.getColor(this, R.color.azul_1)),
-            inicio,
-            fin,
-            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-        )
-
-        texto?.let {
-            it.text = spannable
-            it.movementMethod = LinkMovementMethod.getInstance()
-        }
 
         val olvido = findViewById<TextView>(R.id.txt_olvido_contraseña)
 
@@ -96,6 +73,33 @@ class MainActivity : AppCompatActivity() {
                 val intent = Intent(this, Baul_contrasenas::class.java)
                 startActivity(intent)
             }
+        }
+
+        val registro = findViewById<TextView>(R.id.txt_registro)
+
+        registro.setOnClickListener {
+            val intent = Intent(this, crearCuenta::class.java)
+            startActivity(intent)
+        }
+
+        val texto = findViewById<TextView>(R.id.txt_registro)
+
+        val textoCompleto = "¿Nuevo en Valkyria? Crea una cuenta"
+        val spannable = SpannableString(textoCompleto)
+
+        val inicio = textoCompleto.indexOf("Crea una cuenta")
+        val fin = inicio + "Crea una cuenta".length
+
+        spannable.setSpan(
+            ForegroundColorSpan(ContextCompat.getColor(this, R.color.azul_1)),
+            inicio,
+            fin,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+
+        texto?.let {
+            it.text = spannable
+            it.movementMethod = LinkMovementMethod.getInstance()
         }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->

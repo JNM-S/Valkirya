@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.valkirya"
+    namespace = "com.example.valkyria"
     compileSdk {
         version = release(36) {
             minorApiLevel = 1
@@ -11,7 +11,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.example.valkirya"
+        applicationId = "com.example.valkyria"
         minSdk = 24
         targetSdk = 36
         versionCode = 1

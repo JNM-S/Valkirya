@@ -27,12 +27,12 @@
             app:srcCompat="@drawable/icono_inicio_sesion" />
 
         <TextView
-            android:id="@+id/Nombre_Valkirya"
+            android:id="@+id/Nombre_Valkyria"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="90dp"
             android:fontFamily="@font/inter_font"
-            android:text="Valkirya"
+            android:text="Valkyria"
             android:textColor="@color/blanco"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -75,7 +75,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
 
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="24dp"
             app:boxBackgroundColor="#1A2238"
             app:boxBackgroundMode="filled"
@@ -101,7 +101,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:background="@null"
-                android:hint="name@Valkirya.com"
+                android:hint="name@Valkyria.com"
                 android:textColor="#FFFFFF"
                 android:textColorHint="#8A94A6" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -110,7 +110,7 @@
             android:id="@+id/Contrasena_Inicio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/inter_font"
             android:text="Contraseña"
             android:textColor="@color/gris_2"
@@ -126,7 +126,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
 
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="24dp"
             app:boxBackgroundColor="#1A2238"
             app:boxBackgroundMode="filled"
