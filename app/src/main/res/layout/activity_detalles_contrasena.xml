@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#101322"
+    tools:context=".DetallesContrasena">
+
+    <!-- Contenido con scroll -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:descendantFocusability="beforeDescendants"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="100dp">
+
+            <!-- ===== HEADER ===== -->
+            <ImageView
+                android:id="@+id/btn_back_detalles"
+                android:layout_width="38dp"
+                android:layout_height="41dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="14dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/boton_back" />
+
+            <TextView
+                android:id="@+id/txt_titulo_detalles"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:fontFamily="@font/inter_font"
+                android:text="Detalles"
+                android:textColor="@color/blanco"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/btn_editar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="18dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/inter_font"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:text="Editar"
+                android:textColor="@color/azul_1"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- ===== ÍCONO DEL SERVICIO ===== -->
+            <ImageView
+                android:id="@+id/img_servicio_icono"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="28dp"
+                android:background="@drawable/bg_icono"
+                android:padding="12dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_titulo_detalles"
+                app:srcCompat="@drawable/ic_service_placeholder"
+                tools:src="@drawable/ic_service_placeholder" />
+
+            <TextView
+                android:id="@+id/txt_nombre_servicio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/inter_font"
+                android:text="GitHub"
+                android:textColor="@color/blanco"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/img_servicio_icono"
+                tools:text="GitHub" />
+
+            <TextView
+                android:id="@+id/txt_url_servicio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/inter_font"
+                android:text="github.com"
+                android:textColor="@color/gris_1"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_nombre_servicio"
+                tools:text="github.com" />
+
+            <!-- ===== NOMBRE DE USUARIO ===== -->
+            <TextView
+                android:id="@+id/label_nombre_usuario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="28dp"
+                android:fontFamily="@font/inter_font"
+                android:letterSpacing="0.12"
+                android:text="NOMBRE DE USUARIO"
+                android:textColor="@color/gris_1"
+                android:textSize="11sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_url_servicio" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/campo_nombre_usuario"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/bg_card"
+                android:paddingStart="16dp"
+                android:paddingEnd="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/label_nombre_usuario">
+
+                <TextView
+                    android:id="@+id/txt_nombre_usuario_valor"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter_font"
+                    android:text="alex_valkyria"
+                    android:textColor="@color/blanco"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/btn_copiar_usuario"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="alex_valkyria" />
+
+                <ImageView
+                    android:id="@+id/btn_copiar_usuario"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:background="@drawable/bg_copy"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:padding="4dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_copy"
+                    app:tint="@color/gris_1" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- ===== CONTRASEÑA ===== -->
+            <TextView
+                android:id="@+id/label_contrasena"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/inter_font"
+                android:letterSpacing="0.12"
+                android:text="CONTRASEÑA"
+                android:textColor="@color/gris_1"
+                android:textSize="11sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/campo_nombre_usuario" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/campo_contrasena"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/bg_card"
+                android:paddingStart="16dp"
+                android:paddingEnd="12dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/label_contrasena">
+
+                <TextView
+                    android:id="@+id/txt_contrasena_valor"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter_font"
+                    android:inputType="textPassword"
+                    android:text="SuperSecretPassword123!"
+                    android:textColor="@color/blanco"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toStartOf="@id/btn_toggle_visibilidad"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="••••••••••••••" />
+
+                <ImageView
+                    android:id="@+id/btn_toggle_visibilidad"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:padding="2dp"
+                    app:layout_constraintBottom_toTopOf="@id/barra_fortaleza"
+                    app:layout_constraintEnd_toStartOf="@id/btn_copiar_contrasena"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/eye"
+                    app:tint="@color/gris_1" />
+
+                <ImageView
+                    android:id="@+id/btn_copiar_contrasena"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:background="@drawable/bg_copy"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:padding="4dp"
+                    app:layout_constraintBottom_toTopOf="@id/barra_fortaleza"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_copy"
+                    app:tint="@color/gris_1" />
+
+                <!-- Barra de fortaleza -->
+                <View
+                    android:id="@+id/barra_fortaleza_bg"
+                    android:layout_width="0dp"
+                    android:layout_height="4dp"
+                    android:layout_marginTop="8dp"
+                    android:background="#1A2238"
+                    android:backgroundTint="#2A3A5A"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txt_contrasena_valor" />
+
+                <View
+                    android:id="@+id/barra_fortaleza"
+                    android:layout_width="0dp"
+                    android:layout_height="4dp"
+                    android:background="@color/azul_1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/barra_fortaleza_bg" />
+
+                <TextView
+                    android:id="@+id/txt_fortaleza_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/inter_font"
+                    android:text="Contraseña fuerte"
+                    android:textColor="@color/gris_1"
+                    android:textSize="11sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/barra_fortaleza" />
+
+                <TextView
+                    android:id="@+id/txt_fortaleza_valor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/inter_font"
+                    android:text="Fuerte"
+                    android:textColor="@color/azul_1"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/barra_fortaleza" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- ===== METADATA: CREADO / MODIFICADO ===== -->
+            <LinearLayout
+                android:id="@+id/layout_metadata"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/campo_contrasena">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_card"
+                    android:orientation="vertical"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_font"
+                        android:letterSpacing="0.08"
+                        android:text="CREADO EL"
+                        android:textColor="@color/gris_1"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/txt_fecha_creacion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/inter_font"
+                        android:text="Ene 12, 2024"
+                        android:textColor="@color/blanco"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        tools:text="Ene 12, 2024" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_card"
+                    android:orientation="vertical"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_font"
+                        android:letterSpacing="0.08"
+                        android:text="ULTIMA MODIFICACIÓN"
+                        android:textColor="@color/gris_1"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/txt_fecha_modificacion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/inter_font"
+                        android:text="2 días atrás"
+                        android:textColor="@color/blanco"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        tools:text="2 días atrás" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- ===== BOTÓN ELIMINAR ===== -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_eliminar"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="28dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/bg_boton_eliminar"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/inter_font"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:text="Eliminar"
+                android:textColor="@color/RED"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:backgroundTint="@null"
+                app:icon="@drawable/ic_delete"
+                app:iconGravity="textStart"
+                app:iconTint="@color/RED"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layout_metadata"
+                app:rippleColor="@android:color/transparent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <!-- ===== BOTTOM NAVIGATION ===== -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav_detalles"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="#0D1120"
+        app:itemIconTint="#FFFFFF"
+        app:itemTextColor="#FFFFFF"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/bottom_nav_menu" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

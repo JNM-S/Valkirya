@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#101322"
+    android:descendantFocusability="beforeDescendants"
+    tools:context=".PerfilUsuario">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="48dp">
+
+        <!-- ===== HEADER ===== -->
+        <ImageView
+            android:id="@+id/btn_back_perfil"
+            android:layout_width="38dp"
+            android:layout_height="41dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="14dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/boton_back" />
+
+        <TextView
+            android:id="@+id/txt_titulo_perfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:fontFamily="@font/inter_font"
+            android:text="Perfil"
+            android:textColor="@color/blanco"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- ===== AVATAR ===== -->
+        <ImageView
+            android:id="@+id/img_avatar"
+            android:layout_width="88dp"
+            android:layout_height="88dp"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/bg_avatar"
+            android:padding="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_titulo_perfil"
+            app:srcCompat="@drawable/person"
+            app:tint="@color/gris_1" />
+
+        <TextView
+            android:id="@+id/txt_nombre_completo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/inter_font"
+            android:text="Erik Valkyrie"
+            android:textColor="@color/blanco"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/img_avatar"
+            tools:text="Erik Valkyrie" />
+
+        <TextView
+            android:id="@+id/txt_email_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/inter_font"
+            android:text="erik@valkyria.io"
+            android:textColor="@color/azul_1"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_nombre_completo"
+            tools:text="erik@valkyria.io" />
+
+        <!-- ===== SECCIÓN INFORMACIÓN PERSONAL ===== -->
+        <TextView
+            android:id="@+id/label_info_personal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="28dp"
+            android:fontFamily="@font/inter_font"
+            android:text="Información personal"
+            android:textColor="@color/blanco"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_email_header" />
+
+        <!-- Campo: Nombre de usuario -->
+        <TextView
+            android:id="@+id/label_usuario_perfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/inter_font"
+            android:text="Nombre de usuario"
+            android:textColor="@color/gris_2"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/label_info_personal" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_usuario_perfil"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="24dp"
+            app:boxBackgroundColor="#1A2238"
+            app:boxBackgroundMode="filled"
+            app:boxCornerRadiusBottomEnd="16dp"
+            app:boxCornerRadiusBottomStart="16dp"
+            app:boxCornerRadiusTopEnd="16dp"
+            app:boxCornerRadiusTopStart="16dp"
+            app:boxStrokeColor="@android:color/transparent"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/label_usuario_perfil"
+            app:startIconDrawable="@drawable/email"
+            app:startIconTint="@color/gris_1">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/entrada_usuario_perfil"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="@null"
+                android:hint="erik_valkyrie"
+                android:inputType="text"
+                android:textColor="@color/blanco"
+                android:textColorHint="#8A94A6" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Campo: Correo electrónico -->
+        <TextView
+            android:id="@+id/label_email_perfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/inter_font"
+            android:text="Correo electrónico"
+            android:textColor="@color/gris_2"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_usuario_perfil" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_email_perfil"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="24dp"
+            app:boxBackgroundColor="#1A2238"
+            app:boxBackgroundMode="filled"
+            app:boxCornerRadiusBottomEnd="16dp"
+            app:boxCornerRadiusBottomStart="16dp"
+            app:boxCornerRadiusTopEnd="16dp"
+            app:boxCornerRadiusTopStart="16dp"
+            app:boxStrokeColor="@android:color/transparent"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/label_email_perfil"
+            app:startIconDrawable="@drawable/email"
+            app:startIconTint="@color/gris_1">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/entrada_email_perfil"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="@null"
+                android:hint="erik@valkyria.io"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/blanco"
+                android:textColorHint="#8A94A6" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Campo: Número de teléfono -->
+        <TextView
+            android:id="@+id/label_telefono_perfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/inter_font"
+            android:text="Número de teléfono"
+            android:textColor="@color/gris_2"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_email_perfil" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_telefono_perfil"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="24dp"
+            app:boxBackgroundColor="#1A2238"
+            app:boxBackgroundMode="filled"
+            app:boxCornerRadiusBottomEnd="16dp"
+            app:boxCornerRadiusBottomStart="16dp"
+            app:boxCornerRadiusTopEnd="16dp"
+            app:boxCornerRadiusTopStart="16dp"
+            app:boxStrokeColor="@android:color/transparent"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/label_telefono_perfil">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/phone"
+                    app:tint="@color/gris_1" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/input_prefijo_perfil"
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:inputType="none"
+                    android:text="+57"
+                    android:textColor="@color/blanco" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="30dp"
+                    android:alpha="0.3"
+                    android:background="@color/gris_1" />
+
+                <EditText
+                    android:id="@+id/entrada_telefono_perfil"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="000 000 0000"
+                    android:inputType="phone"
+                    android:paddingStart="20dp"
+                    android:textColor="@color/blanco"
+                    android:textColorHint="@color/gris_1" />
+
+            </LinearLayout>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- ===== BOTÓN GUARDAR CAMBIOS ===== -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_guardar_perfil"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/bg_boton_ingresar"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="@font/inter_font"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:text="Guardar cambios"
+            android:textColor="@color/blanco"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:backgroundTint="@null"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_telefono_perfil"
+            app:rippleColor="@android:color/transparent" />
+
+        <!-- ===== BOTÓN CAMBIAR CUENTA ===== -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_cambiar_cuenta"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/bg_boton_secundario"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="@font/inter_font"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:text="Cambiar cuenta"
+            android:textColor="@color/blanco"
+            android:textSize="16sp"
+            app:backgroundTint="@null"
+            app:icon="@drawable/ic_switch_account"
+            app:iconGravity="textStart"
+            app:iconTint="@color/blanco"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_guardar_perfil"
+            app:rippleColor="@android:color/transparent" />
+
+        <!-- ===== BOTÓN SALIR ===== -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_salir_cuenta"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/bg_boton_secundario"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="@font/inter_font"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:text="Salir de la cuenta"
+            android:textColor="@color/RED"
+            android:textSize="16sp"
+            app:backgroundTint="@null"
+            app:icon="@drawable/ic_logout"
+            app:iconGravity="textStart"
+            app:iconTint="@color/RED"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_cambiar_cuenta"
+            app:rippleColor="@android:color/transparent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
