@@ -35,6 +35,18 @@
             </intent-filter>
         </activity>
         <activity android:name=".crearCuenta" />
+        <activity
+            android:name=".DetallesContrasena"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".CambioContrasena"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".PerfilUsuario"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>

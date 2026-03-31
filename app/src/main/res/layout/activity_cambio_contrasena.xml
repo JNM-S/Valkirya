@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#101322"
+    android:descendantFocusability="beforeDescendants"
+    tools:context=".CambioContrasena">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="48dp">
+
+        <!-- ===== HEADER ===== -->
+        <ImageView
+            android:id="@+id/btn_back_cambio"
+            android:layout_width="38dp"
+            android:layout_height="41dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="14dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/boton_back" />
+
+        <TextView
+            android:id="@+id/txt_titulo_cambio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:fontFamily="@font/inter_font"
+            android:text="Cambia tu contraseña"
+            android:textColor="@color/blanco"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- ===== ÍCONO ESCUDO ===== -->
+        <ImageView
+            android:id="@+id/img_escudo"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_marginTop="36dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_titulo_cambio"
+            app:srcCompat="@drawable/ic_shield"
+            app:tint="#2547F4" />
+
+        <!-- ===== TÍTULO Y SUBTÍTULO ===== -->
+        <TextView
+            android:id="@+id/txt_cambio_titulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/inter_font"
+            android:text="Cambia Tu Contraseña"
+            android:textColor="@color/blanco"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/img_escudo" />
+
+        <TextView
+            android:id="@+id/txt_cambio_subtitulo"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/inter_font"
+            android:gravity="center"
+            android:text="Introduce tu correo electrónico para recibir\nlas instrucciones para el cambio de tu\ncuenta."
+            android:textColor="@color/gris_1"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_cambio_titulo" />
+
+        <!-- ===== CAMPO EMAIL ===== -->
+        <TextView
+            android:id="@+id/label_email_cambio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="28dp"
+            android:fontFamily="@font/inter_font"
+            android:text="Correo electrónico"
+            android:textColor="@color/gris_2"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_cambio_subtitulo" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_email_cambio"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="24dp"
+            app:boxBackgroundColor="#1A2238"
+            app:boxBackgroundMode="filled"
+            app:boxCornerRadiusBottomEnd="16dp"
+            app:boxCornerRadiusBottomStart="16dp"
+            app:boxCornerRadiusTopEnd="16dp"
+            app:boxCornerRadiusTopStart="16dp"
+            app:boxStrokeColor="@android:color/transparent"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/label_email_cambio"
+            app:startIconDrawable="@drawable/email"
+            app:startIconTint="@color/gris_1">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/entrada_email_cambio"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="@null"
+                android:hint="ejemplo@valkyria.com"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/blanco"
+                android:textColorHint="#8A94A6" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- ===== BOTÓN ENVIAR ===== -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_enviar_cambio"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/bg_boton_ingresar"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="@font/inter_font"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:text="Enviar Instrucciones"
+            android:textColor="@color/blanco"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:backgroundTint="@null"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_email_cambio"
+            app:rippleColor="@android:color/transparent" />
+
+        <!-- ===== LINK VOLVER ===== -->
+        <TextView
+            android:id="@+id/link_volver_config"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="@font/inter_font"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:text="Volver a la configuración"
+            android:textColor="@color/azul_1"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_enviar_cambio" />
+
+        <!-- ===== BRANDING VALKYRIA ===== -->
+        <ImageView
+            android:id="@+id/img_logo_cambio"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/link_volver_config"
+            app:srcCompat="@drawable/icono_inicio_sesion" />
+
+        <TextView
+            android:id="@+id/txt_branding_valkyria"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/inter_font"
+            android:text="Valkyria"
+            android:textColor="@color/blanco"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/img_logo_cambio" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
