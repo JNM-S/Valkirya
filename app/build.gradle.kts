@@ -38,6 +38,7 @@ android {
 dependencies {
     implementation("androidx.biometric:biometric:1.2.0-alpha05")
     implementation("com.google.android.material:material:1.11.0")
+    implementation("com.google.android.material:material:1.11.0")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

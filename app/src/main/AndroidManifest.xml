@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Valkyria">
         <activity
+            android:name=".Configuracion"
+            android:exported="false" />
+        <activity
             android:name=".generador_contra"
             android:exported="false" />
         <activity

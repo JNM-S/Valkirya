@@ -44,10 +44,11 @@
                 android:id="@+id/txt_saludo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Buenos días, Usuario"
+                android:layout_marginStart="10dp"
+                android:translationY="-8dp"
+                android:text="Buenos días, \nUsuario"
                 android:textColor="@color/gris_1"
-                android:textSize="14sp"
-                android:layout_marginStart="12dp"/>
+                android:textSize="14sp" />
         </LinearLayout>
 
         <EditText

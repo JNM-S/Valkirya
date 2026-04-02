@@ -1,7 +1,9 @@
 package com.example.valkyria
 
+
 import android.content.Intent
 import android.os.Bundle
+import com.google.android.material.transition.platform.MaterialSharedAxis
 import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -13,6 +15,9 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.core.widget.addTextChangedListener
 import java.util.Calendar
 import androidx.activity.OnBackPressedCallback
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+
 
 class Baul_contrasenas : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,7 +70,40 @@ class Baul_contrasenas : AppCompatActivity() {
             else -> "Buenas noches"
         }
 
-        saludoTxt.text = "$saludo, $nombre"
+        saludoTxt.text = "$saludo, \n$nombre"
+
+        val botonGenerador = findViewById<FloatingActionButton>(R.id.btn_add)
+
+        botonGenerador.setOnClickListener {
+            val intent = Intent(this, generador_contra::class.java)
+            startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+            window.enterTransition = MaterialSharedAxis(MaterialSharedAxis.X, true)
+            window.exitTransition = MaterialSharedAxis(MaterialSharedAxis.X, false)
+            }
+
+        val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_nav)
+
+        bottomNav.setOnItemSelectedListener {
+
+            when (it.itemId) {
+
+                R.id.nav_home -> true
+
+                R.id.nav_key -> {
+                    startActivity(Intent(this, generador_contra::class.java))
+                    true
+                }
+
+                R.id.nav_settings -> {
+                    startActivity(Intent(this, Configuracion::class.java))
+                    true
+                }
+
+                else -> false
+            }
+        }
+
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -77,5 +115,8 @@ class Baul_contrasenas : AppCompatActivity() {
                 finishAffinity()
             }
         })
+
+
     }
+
 }
