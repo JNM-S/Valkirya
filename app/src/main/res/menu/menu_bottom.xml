@@ -10,8 +10,7 @@
     <item
         android:id="@+id/nav_key"
         android:icon="@drawable/ic_key"
-        android:title="Generador"
-        android:checked="true"/>
+        android:title="Generador" />
 
     <item
         android:id="@+id/nav_settings"
