@@ -16,7 +16,27 @@ class generador_contra : AppCompatActivity() {
         setContentView(R.layout.activity_generador_contra)
 
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_nav)
+
         bottomNav.selectedItemId = R.id.nav_key
+
+        bottomNav.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+
+                R.id.nav_home -> {
+                    false
+                }
+
+                R.id.nav_key -> {
+                    true
+                }
+
+                R.id.nav_settings -> {
+                    false
+                }
+
+                else -> false
+            }
+        }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())

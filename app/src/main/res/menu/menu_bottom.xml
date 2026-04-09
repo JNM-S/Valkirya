@@ -3,19 +3,16 @@
 
     <item
         android:id="@+id/nav_home"
-        android:checked="false"
         android:icon="@drawable/lock"
         android:title="Baúl" />
 
     <item
         android:id="@+id/nav_key"
         android:icon="@drawable/ic_key"
-        android:title="Generador"
-        android:checked="true"/>
+        android:title="Generador" />
 
     <item
         android:id="@+id/nav_settings"
-        android:checked="false"
         android:icon="@drawable/ic_settings"
         android:title="Ajustes" />
 

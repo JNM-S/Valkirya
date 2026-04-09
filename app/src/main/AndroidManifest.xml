@@ -14,6 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Valkyria">
         <activity
+            android:name=".AutoLock"
+            android:exported="false" />
+        <activity
+            android:name=".config"
+            android:exported="false" />
+        <activity
             android:name=".Configuracion"
             android:exported="false" />
         <activity
