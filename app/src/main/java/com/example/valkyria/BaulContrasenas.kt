@@ -19,7 +19,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
-class Baul_contrasenas : AppCompatActivity() {
+class BaulContrasenas: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -96,7 +96,7 @@ class Baul_contrasenas : AppCompatActivity() {
                 }
 
                 R.id.nav_settings -> {
-                    startActivity(Intent(this, Configuracion::class.java))
+                    startActivity(Intent(this, Config::class.java))
                     true
                 }
 
