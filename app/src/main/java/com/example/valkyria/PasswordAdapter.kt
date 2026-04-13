@@ -12,7 +12,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
 class PasswordAdapter(
-    private val listaOriginal: List<PasswordItem>,
+    private var listaOriginal: List<PasswordItem>,
     private val onClick: (PasswordItem) -> Unit):
     RecyclerView.Adapter<PasswordAdapter.ViewHolder>() {
 
@@ -44,7 +44,7 @@ class PasswordAdapter(
             val clipboard = holder.itemView.context
                 .getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
 
-            val clip = ClipData.newPlainText("dato", item.usuario)
+            val clip = ClipData.newPlainText("dato", item.contrasena)
             clipboard.setPrimaryClip(clip)
 
             Toast.makeText(holder.itemView.context, "Copiado", Toast.LENGTH_SHORT).show()
@@ -63,7 +63,12 @@ class PasswordAdapter(
                         it.usuario.contains(texto, ignoreCase = true)
             }.toMutableList()
         }
+        notifyDataSetChanged()
+    }
 
+    fun actualizarLista(nuevaLista: List<PasswordItem>) {
+        listaOriginal = nuevaLista
+        listaFiltrada = nuevaLista.toMutableList()
         notifyDataSetChanged()
     }
 }

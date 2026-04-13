@@ -52,6 +52,10 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
+            android:name=".EditarContrasena"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
             android:name=".CambioContrasena"
             android:exported="false"
             android:windowSoftInputMode="adjustResize|stateHidden" />

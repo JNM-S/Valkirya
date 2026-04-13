@@ -6,7 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0B1220"
+    android:background="@color/bg_primary"
     tools:context=".AutoLock">
 
     <LinearLayout
@@ -44,7 +44,7 @@
                 android:layout_weight="1"
                 android:text="Auto-Lock"
                 android:gravity="center"
-                android:textColor="@color/blanco"
+                android:textColor="@color/text_primary"
                 android:textSize="18sp" />
 
         </LinearLayout>
@@ -63,7 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="1 minuto"
-                android:textColor="@color/blanco"
+                android:textColor="@color/text_primary"
                 android:padding="16dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/bg_input"
@@ -74,7 +74,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="3 minutos"
-                android:textColor="@color/blanco"
+                android:textColor="@color/text_primary"
                 android:padding="16dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/bg_input"
@@ -85,7 +85,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="5 minutos"
-                android:textColor="@color/blanco"
+                android:textColor="@color/text_primary"
                 android:padding="16dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/bg_input"
@@ -96,7 +96,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="10 minutos"
-                android:textColor="@color/blanco"
+                android:textColor="@color/text_primary"
                 android:padding="16dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/bg_input"
@@ -111,7 +111,7 @@
             android:layout_marginTop="20dp"
             android:gravity="center"
             android:text="El Auto-lock apagará la pantalla y bloqueará la aplicación después del período de inactividad seleccionado."
-            android:textColor="@color/gris_1"
+            android:textColor="@color/text_secondary"
             android:textSize="13sp" />
 
     </LinearLayout>

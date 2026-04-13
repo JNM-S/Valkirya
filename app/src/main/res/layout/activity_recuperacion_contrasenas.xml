@@ -6,7 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#101322"
+    android:background="@color/bg_primary"
     android:descendantFocusability="beforeDescendants"
     tools:context=".Recuperacion_contrasenas">
 
@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="¿Olvidaste tu contraseña?"
-            android:textColor="@color/blanco"
+            android:textColor="@color/text_primary"
             android:textStyle="bold"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
             android:text="Recuperar Contraseña"
-            android:textColor="@color/blanco"
+            android:textColor="@color/text_primary"
             android:fontFamily="@font/inter_font"
             android:textStyle="bold"
             android:textSize="24sp"
@@ -72,7 +72,7 @@
             android:layout_marginTop="15dp"
             android:gravity="center"
             android:text="Introduce tu correo electrónico para recibir \nlas instrucciones de recuperación de tu \ncuenta."
-            android:textColor="@color/gris_1"
+            android:textColor="@color/text_secondary"
             android:fontFamily="@font/inter_font"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.511"
@@ -101,7 +101,7 @@
 
             android:layout_marginTop="10dp"
             android:layout_marginEnd="24dp"
-            app:boxBackgroundColor="#1A2238"
+            app:boxBackgroundColor="@color/bg_card"
             app:boxBackgroundMode="filled"
             app:boxCornerRadiusBottomEnd="16dp"
             app:boxCornerRadiusBottomStart="16dp"
@@ -126,7 +126,7 @@
                 android:layout_height="55dp"
                 android:background="@null"
                 android:hint="name@Valkyria.com"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/text_primary"
                 android:textColorHint="#8A94A6" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -144,7 +144,7 @@
             android:foreground="?attr/selectableItemBackgroundBorderless"
             android:text="Enviar Instrucciones"
 
-            android:textColor="@color/blanco"
+            android:textColor="@color/text_primary"
             android:textSize="18sp"
 
             android:textStyle="bold"
@@ -188,7 +188,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/inter_font"
             android:text="Valkyria"
-            android:textColor="@color/blanco"
+            android:textColor="@color/text_primary"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"

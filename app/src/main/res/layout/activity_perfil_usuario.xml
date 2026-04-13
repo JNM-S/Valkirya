@@ -6,7 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#101322"
+    android:background="@color/bg_primary"
     android:descendantFocusability="beforeDescendants"
     tools:context=".PerfilUsuario">
 
@@ -36,7 +36,7 @@
             android:layout_marginTop="18dp"
             android:fontFamily="@font/inter_font"
             android:text="Perfil"
-            android:textColor="@color/blanco"
+            android:textColor="@color/text_primary"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -64,7 +64,7 @@
             android:layout_marginTop="12dp"
             android:fontFamily="@font/inter_font"
             android:text="Erik Valkyrie"
-            android:textColor="@color/blanco"
+            android:textColor="@color/text_primary"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -95,7 +95,7 @@
             android:layout_marginTop="28dp"
             android:fontFamily="@font/inter_font"
             android:text="Información personal"
-            android:textColor="@color/blanco"
+            android:textColor="@color/text_primary"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -122,7 +122,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="6dp"
             android:layout_marginEnd="24dp"
-            app:boxBackgroundColor="#1A2238"
+            app:boxBackgroundColor="@color/bg_card"
             app:boxBackgroundMode="filled"
             app:boxCornerRadiusBottomEnd="16dp"
             app:boxCornerRadiusBottomStart="16dp"
@@ -144,7 +144,7 @@
                 android:background="@null"
                 android:hint="erik_valkyrie"
                 android:inputType="text"
-                android:textColor="@color/blanco"
+                android:textColor="@color/text_primary"
                 android:textColorHint="#8A94A6" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -170,7 +170,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="6dp"
             android:layout_marginEnd="24dp"
-            app:boxBackgroundColor="#1A2238"
+            app:boxBackgroundColor="@color/bg_card"
             app:boxBackgroundMode="filled"
             app:boxCornerRadiusBottomEnd="16dp"
             app:boxCornerRadiusBottomStart="16dp"
@@ -192,7 +192,7 @@
                 android:background="@null"
                 android:hint="erik@valkyria.io"
                 android:inputType="textEmailAddress"
-                android:textColor="@color/blanco"
+                android:textColor="@color/text_primary"
                 android:textColorHint="#8A94A6" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -218,7 +218,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="6dp"
             android:layout_marginEnd="24dp"
-            app:boxBackgroundColor="#1A2238"
+            app:boxBackgroundColor="@color/bg_card"
             app:boxBackgroundMode="filled"
             app:boxCornerRadiusBottomEnd="16dp"
             app:boxCornerRadiusBottomStart="16dp"
@@ -253,7 +253,7 @@
                     android:background="@null"
                     android:inputType="none"
                     android:text="+57"
-                    android:textColor="@color/blanco" />
+                    android:textColor="@color/text_primary" />
 
                 <View
                     android:layout_width="1dp"
@@ -270,8 +270,8 @@
                     android:hint="000 000 0000"
                     android:inputType="phone"
                     android:paddingStart="20dp"
-                    android:textColor="@color/blanco"
-                    android:textColorHint="@color/gris_1" />
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_secondary" />
 
             </LinearLayout>
 
@@ -291,7 +291,7 @@
             android:fontFamily="@font/inter_font"
             android:foreground="?attr/selectableItemBackgroundBorderless"
             android:text="Guardar cambios"
-            android:textColor="@color/blanco"
+            android:textColor="@color/text_primary"
             android:textSize="16sp"
             android:textStyle="bold"
             app:backgroundTint="@null"
@@ -314,7 +314,7 @@
             android:fontFamily="@font/inter_font"
             android:foreground="?attr/selectableItemBackgroundBorderless"
             android:text="Cambiar cuenta"
-            android:textColor="@color/blanco"
+            android:textColor="@color/text_primary"
             android:textSize="16sp"
             app:backgroundTint="@null"
             app:icon="@drawable/ic_switch_account"

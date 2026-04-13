@@ -6,7 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#101322"
+    android:background="@color/bg_primary"
     android:fillViewport="true"
     tools:context=".MainActivity" >
 
@@ -33,7 +33,7 @@
             android:layout_marginTop="90dp"
             android:fontFamily="@font/inter_font"
             android:text="Valkyria"
-            android:textColor="@color/blanco"
+            android:textColor="@color/text_primary"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -48,7 +48,7 @@
             android:fontFamily="@font/inter_font"
             android:gravity="center"
             android:text="Acceso Seguro"
-            android:textColor="@color/gris_1"
+            android:textColor="@color/text_secondary"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
@@ -77,7 +77,7 @@
 
             android:layout_marginTop="10dp"
             android:layout_marginEnd="24dp"
-            app:boxBackgroundColor="#1A2238"
+            app:boxBackgroundColor="@color/bg_card"
             app:boxBackgroundMode="filled"
             app:boxCornerRadiusBottomEnd="16dp"
             app:boxCornerRadiusBottomStart="16dp"
@@ -102,7 +102,7 @@
                 android:layout_height="55dp"
                 android:background="@null"
                 android:hint="name@Valkyria.com"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/text_primary"
                 android:textColorHint="#8A94A6"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
@@ -131,7 +131,7 @@
 
             android:layout_marginTop="10dp"
             android:layout_marginEnd="24dp"
-            app:boxBackgroundColor="#1A2238"
+            app:boxBackgroundColor="@color/bg_card"
             app:boxBackgroundMode="filled"
             app:boxCornerRadiusBottomEnd="16dp"
             app:boxCornerRadiusBottomStart="16dp"
@@ -161,8 +161,8 @@
                 android:hint="••••••••"
                 android:inputType="textPassword"
                 android:paddingStart="8dp"
-                android:textColor="@color/blanco"
-                android:textColorHint="@color/gris_1" />
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_secondary" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -196,7 +196,7 @@
             android:foreground="?attr/selectableItemBackgroundBorderless"
             android:text="Ingresar"
 
-            android:textColor="@color/blanco"
+            android:textColor="@color/text_primary"
             android:textSize="18sp"
 
             android:textStyle="bold"
@@ -229,7 +229,7 @@
             android:fontFamily="@font/inter_font"
             android:letterSpacing="0.1"
             android:text="CONTINUAR CON"
-            android:textColor="@color/gris_1"
+            android:textColor="@color/text_secondary"
 
 
             android:textSize="14sp"
@@ -291,7 +291,7 @@
                 android:fontFamily="@font/inter_font"
                 android:gravity="center"
                 android:text="Ingresa con\nBiometria"
-                android:textColor="@color/blanco"
+                android:textColor="@color/text_primary"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -311,7 +311,7 @@
             android:layout_marginTop="30dp"
             android:fontFamily="@font/inter_font"
             android:text="¿Nuevo en Valkyria? Crea una cuenta"
-            android:textColor="@color/gris_1"
+            android:textColor="@color/text_secondary"
 
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"

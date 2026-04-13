@@ -11,6 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -24,6 +25,15 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        // Aplicar modo claro/oscuro guardado (default: claro)
+        val appPrefs = getSharedPreferences("app_prefs", MODE_PRIVATE)
+        val isDark = appPrefs.getBoolean("dark_mode", false)
+        AppCompatDelegate.setDefaultNightMode(
+            if (isDark) AppCompatDelegate.MODE_NIGHT_YES
+            else        AppCompatDelegate.MODE_NIGHT_NO
+        )
+
         setContentView(R.layout.activity_main)
 
         val prefs = getSharedPreferences("sesion", MODE_PRIVATE)

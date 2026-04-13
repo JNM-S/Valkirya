@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Colores de tema — modo OSCURO -->
+    <color name="bg_primary">#101322</color>
+    <color name="bg_card">#1A2238</color>
+    <color name="bg_nav">#0F172A</color>
+    <color name="bg_input">#1A233A</color>
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#94A3B8</color>
+    <color name="bg_input_color">#1A2238</color>
+    <color name="blanco">#FFFFFF</color>
+    <color name="gris_1">#94A3B8</color>
+    <color name="gris_2">#CBD5E1</color>
+</resources>
