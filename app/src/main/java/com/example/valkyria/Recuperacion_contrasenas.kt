@@ -12,7 +12,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
-import androidx.appcompat.app.AlertDialog
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class Recuperacion_contrasenas : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,11 +51,11 @@ class Recuperacion_contrasenas : AppCompatActivity() {
                     layoutEmail2.error = "Ingresa tu correo"
                 }
             } else {
-                AlertDialog.Builder(this)
+                MaterialAlertDialogBuilder(this)
                     .setTitle("Recuperación de contraseña")
                     .setMessage("Te hemos enviado un correo para recuperar tu contraseña. Revisa tu bandeja de entrada o de spam")
                     .setCancelable(false)
-                    .setPositiveButton("Aceptar"){dialog, _ ->
+                    .setPositiveButton("Aceptar") { dialog, _ ->
                         dialog.dismiss()
                     }
                     .show()

@@ -6,7 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#101322"
+    android:background="@color/bg_primary"
     android:descendantFocusability="beforeDescendants"
     tools:context=".Verificacion">
 
@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Verificación"
-            android:textColor="@color/blanco"
+            android:textColor="@color/text_primary"
             android:textStyle="bold"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -59,7 +59,7 @@
             android:layout_marginTop="30dp"
             android:text="Gracias por confiar en \nnosotros"
             android:gravity="center"
-            android:textColor="@color/blanco"
+            android:textColor="@color/text_primary"
             android:fontFamily="@font/inter_font"
             android:textStyle="bold"
             android:textSize="24sp"
@@ -74,7 +74,7 @@
             android:layout_marginTop="15dp"
             android:gravity="center"
             android:text="Para iniciar nuestra aventura debes verificar \ntu correo electrónico. Hemos enviado un \nenlace de activación a tu bandeja de \nentrada."
-            android:textColor="@color/gris_1"
+            android:textColor="@color/text_secondary"
             android:fontFamily="@font/inter_font"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.511"
@@ -91,7 +91,7 @@
             android:layout_marginTop="30dp"
 
             android:text="Verificar ahora"
-            android:textColor="@color/blanco"
+            android:textColor="@color/text_primary"
             android:textSize="16sp"
             android:textStyle="bold"
             android:clickable="true"
@@ -128,7 +128,7 @@
             android:focusable="true"
             android:foreground="?attr/selectableItemBackgroundBorderless"
 
-            android:textColor="@color/gris_1"
+            android:textColor="@color/text_secondary"
 
             android:textSize="16sp"
             app:backgroundTint="@null"

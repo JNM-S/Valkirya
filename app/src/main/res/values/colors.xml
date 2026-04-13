@@ -2,8 +2,17 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="blanco">#FFFFFF</color>
-    <color name="gris_1">#94A3B8</color>
-    <color name="gris_2">#CBD5E1</color>
+    <color name="gris_1">#64748B</color>
+    <color name="gris_2">#475569</color>
     <color name="azul_1">#2547F4</color>
     <color name="RED">#FF5722</color>
+
+    <!-- Colores de tema — modo CLARO (default) -->
+    <color name="bg_primary">#F0F4FF</color>
+    <color name="bg_card">#FFFFFF</color>
+    <color name="bg_nav">#E8EDF8</color>
+    <color name="bg_input">#E2E8F4</color>
+    <color name="text_primary">#0F172A</color>
+    <color name="text_secondary">#475569</color>
+    <color name="bg_input_color">#E2E8F4</color>
 </resources>

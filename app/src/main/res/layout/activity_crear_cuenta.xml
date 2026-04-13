@@ -6,7 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#101322"
+    android:background="@color/bg_primary"
     android:descendantFocusability="beforeDescendants"
     tools:context=".crearCuenta">
 
@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Crear cuenta"
-            android:textColor="@color/blanco"
+            android:textColor="@color/text_primary"
             android:textStyle="bold"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -59,7 +59,7 @@
             android:layout_marginTop="15dp"
             android:gravity="center"
             android:text="únete a Valkyria y comienza tu experiencia"
-            android:textColor="@color/gris_1"
+            android:textColor="@color/text_secondary"
             android:fontFamily="@font/inter_font"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.511"
@@ -88,7 +88,7 @@
 
             android:layout_marginTop="10dp"
             android:layout_marginEnd="24dp"
-            app:boxBackgroundColor="#1A2238"
+            app:boxBackgroundColor="@color/bg_card"
             app:boxBackgroundMode="filled"
             app:boxCornerRadiusBottomEnd="16dp"
             app:boxCornerRadiusBottomStart="16dp"
@@ -113,7 +113,7 @@
                 android:layout_height="55dp"
                 android:background="@null"
                 android:hint="Introduce tu usuario"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/text_primary"
                 android:textColorHint="#8A94A6"
                 android:singleLine="true"
                 android:ellipsize="end"
@@ -143,7 +143,7 @@
 
             android:layout_marginTop="10dp"
             android:layout_marginEnd="24dp"
-            app:boxBackgroundColor="#1A2238"
+            app:boxBackgroundColor="@color/bg_card"
             app:boxBackgroundMode="filled"
             app:boxCornerRadiusBottomEnd="16dp"
             app:boxCornerRadiusBottomStart="16dp"
@@ -168,7 +168,7 @@
                 android:layout_height="55dp"
                 android:background="@null"
                 android:hint="name@Valkyria.com"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/text_primary"
                 android:textColorHint="#8A94A6"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
@@ -197,7 +197,7 @@
 
             android:layout_marginTop="10dp"
             android:layout_marginEnd="24dp"
-            app:boxBackgroundColor="#1A2238"
+            app:boxBackgroundColor="@color/bg_card"
             app:boxBackgroundMode="filled"
             app:boxCornerRadiusBottomEnd="16dp"
             app:boxCornerRadiusBottomStart="16dp"
@@ -238,7 +238,7 @@
                     android:layout_width="60dp"
                     android:layout_height="match_parent"
                     android:text="+57"
-                    android:textColor="@color/blanco"
+                    android:textColor="@color/text_primary"
                     android:background="@null"
                     android:inputType="none"/>
 
@@ -256,8 +256,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:hint="000 000 0000"
-                    android:textColor="@color/blanco"
-                    android:textColorHint="@color/gris_1"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_secondary"
                     android:inputType="phone"
                     android:background="@null"
                     android:paddingStart="20dp"/>
@@ -288,7 +288,7 @@
 
             android:layout_marginTop="10dp"
             android:layout_marginEnd="24dp"
-            app:boxBackgroundColor="#1A2238"
+            app:boxBackgroundColor="@color/bg_card"
             app:boxBackgroundMode="filled"
             app:boxCornerRadiusBottomEnd="16dp"
             app:boxCornerRadiusBottomStart="16dp"
@@ -318,8 +318,8 @@
                 android:hint="••••••••"
                 android:inputType="textPassword"
                 android:paddingStart="8dp"
-                android:textColor="@color/blanco"
-                android:textColorHint="@color/gris_1" />
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_secondary" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -346,7 +346,7 @@
             android:foreground="?attr/selectableItemBackgroundBorderless"
 
             app:boxBackgroundMode="filled"
-            app:boxBackgroundColor="#1A2238"
+            app:boxBackgroundColor="@color/bg_card"
 
             app:boxCornerRadiusTopStart="16dp"
             app:boxCornerRadiusTopEnd="16dp"
@@ -369,8 +369,8 @@
                 android:layout_height="55dp"
                 android:hint="Selecciona tu país"
                 android:inputType="none"
-                android:textColor="@color/blanco"
-                android:textColorHint="@color/gris_1" />
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_secondary" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -388,7 +388,7 @@
             android:foreground="?attr/selectableItemBackgroundBorderless"
             android:text="Regitrarse"
 
-            android:textColor="@color/blanco"
+            android:textColor="@color/text_primary"
             android:textSize="18sp"
 
             android:textStyle="bold"
@@ -406,7 +406,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="12dp"
             android:text="Al registrarte, aceptas nuestros Términos de Servicio \ny \nPolítica de Privacidad."
-            android:textColor="@color/gris_1"
+            android:textColor="@color/text_secondary"
             android:textSize="11sp"
             android:gravity="center"
             android:fontFamily="@font/inter_font"
