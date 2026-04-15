@@ -47,9 +47,9 @@ class Recuperacion_contrasenas : BaseActivity() {
         boton2.setOnClickListener {
             val email2Text = email2.text.toString().trim()
             if (email2Text.isEmpty()) {
-                if (email2Text.isEmpty()) {
-                    layoutEmail2.error = "Ingresa tu correo"
-                }
+                layoutEmail2.error = "Ingresa tu correo"
+            } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email2Text).matches()) {
+                layoutEmail2.error = "Correo inválido"
             } else {
                 MaterialAlertDialogBuilder(this)
                     .setTitle("Recuperación de contraseña")
