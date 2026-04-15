@@ -11,7 +11,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.button.MaterialButton
 
 
-class Verificacion : AppCompatActivity() {
+class Verificacion : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()

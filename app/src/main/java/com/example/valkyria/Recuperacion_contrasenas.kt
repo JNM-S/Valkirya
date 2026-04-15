@@ -14,7 +14,7 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
-class Recuperacion_contrasenas : AppCompatActivity() {
+class Recuperacion_contrasenas : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()

@@ -401,8 +401,12 @@
                     android:fontFamily="@font/inter_font"
                     android:textSize="16sp"
                     android:textColor="@color/text_primary"
-                    app:backgroundTint="@color/azul_1"
-                    app:cornerRadius="12dp" />
+                    android:background="@drawable/bg_boton_ingresar"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:backgroundTint="@null"
+                    app:cornerRadius="12dp"
+                    app:rippleColor="@android:color/transparent" />
 
             </LinearLayout>
         </ScrollView>

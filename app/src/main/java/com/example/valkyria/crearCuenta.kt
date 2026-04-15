@@ -22,7 +22,7 @@ import androidx.core.content.ContextCompat
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputLayout
 
-class crearCuenta : AppCompatActivity() {
+class crearCuenta : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -161,7 +161,16 @@ class crearCuenta : AppCompatActivity() {
             val prefs = getSharedPreferences("usuarios", MODE_PRIVATE)
 
             prefs.edit()
+                // Datos activos del usuario actual
                 .putString("nombre_usuario", usuarioText)
+                .putString("correo_usuario", correoccText)
+                .putString("telefono_usuario", telefonoText)
+                .putString("prefijo_usuario", prefijo.text.toString().trim())
+                // Datos persistentes por correo (para restaurar al hacer login)
+                .putString("${correoccText}_nombre", usuarioText)
+                .putString("${correoccText}_telefono", telefonoText)
+                .putString("${correoccText}_prefijo", prefijo.text.toString().trim())
+                // Contraseña
                 .putString(correoccText, passccText)
                 .apply()
 

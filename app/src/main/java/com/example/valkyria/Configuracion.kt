@@ -2,15 +2,17 @@ package com.example.valkyria
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.biometric.BiometricManager
 import com.google.android.material.switchmaterial.SwitchMaterial
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class Configuracion : AppCompatActivity() {
+class Configuracion : BaseActivity() {
+
+    private var isInitializing = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,18 +32,55 @@ class Configuracion : AppCompatActivity() {
         findViewById<android.widget.TextView>(R.id.txt_estado_dispositivo).text =
             "Android ${android.os.Build.VERSION.RELEASE} • Activo ahora"
 
-        // ── Switch Modo Oscuro ─────────────────────────────────────────────
         val prefs = getSharedPreferences("app_prefs", MODE_PRIVATE)
-        val isDark = prefs.getBoolean("dark_mode", false)
+
+        // ── Navegación tarjetas ────────────────────────────────────────────
+        findViewById<android.view.View>(R.id.card).setOnClickListener {
+            startActivity(Intent(this, PerfilUsuario::class.java))
+        }
+
+        findViewById<android.view.View>(R.id.card2).setOnClickListener {
+            startActivity(Intent(this, CambioContrasena::class.java))
+        }
+
+        findViewById<android.view.View>(R.id.card4).setOnClickListener {
+            startActivity(Intent(this, AutoLock::class.java))
+        }
+
+        // ── Switch Modo Oscuro ─────────────────────────────────────────────
         val switchModoOscuro = findViewById<SwitchMaterial>(R.id.switch3)
-        switchModoOscuro.isChecked = isDark
+        isInitializing = true
+        switchModoOscuro.isChecked = prefs.getBoolean("dark_mode", false)
+        isInitializing = false
 
         switchModoOscuro.setOnCheckedChangeListener { _, checked ->
+            if (isInitializing) return@setOnCheckedChangeListener
             prefs.edit().putBoolean("dark_mode", checked).apply()
-            AppCompatDelegate.setDefaultNightMode(
-                if (checked) AppCompatDelegate.MODE_NIGHT_YES
-                else         AppCompatDelegate.MODE_NIGHT_NO
-            )
+            val mode = if (checked) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
+            AppCompatDelegate.setDefaultNightMode(mode)
+            delegate.localNightMode = mode
+        }
+
+        // ── Switch Desbloqueo Biométrico ───────────────────────────────────
+        val switchBiometrico = findViewById<SwitchMaterial>(R.id.switch2)
+        val biometricManager = BiometricManager.from(this)
+        val biometriaDisponible = biometricManager.canAuthenticate(
+            BiometricManager.Authenticators.BIOMETRIC_STRONG
+        ) == BiometricManager.BIOMETRIC_SUCCESS
+
+        if (!biometriaDisponible) {
+            switchBiometrico.isEnabled = false
+            switchBiometrico.isChecked = false
+        } else {
+            isInitializing = true
+            // Activo por defecto (true si nunca se ha guardado)
+            switchBiometrico.isChecked = prefs.getBoolean("biometric_enabled", true)
+            isInitializing = false
+
+            switchBiometrico.setOnCheckedChangeListener { _, checked ->
+                if (isInitializing) return@setOnCheckedChangeListener
+                prefs.edit().putBoolean("biometric_enabled", checked).apply()
+            }
         }
 
         // ── Bottom Navigation ──────────────────────────────────────────────
