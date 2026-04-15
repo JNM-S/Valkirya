@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.widget.SeekBar
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -286,6 +287,17 @@ class generador_contra : BaseActivity() {
             v.layoutParams = layoutParams
             insets
         }
+
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                com.google.android.material.dialog.MaterialAlertDialogBuilder(this@generador_contra)
+                    .setTitle("Salir de la App")
+                    .setMessage("¿Deseas salir de la App?")
+                    .setPositiveButton("Salir") { _, _ -> finishAffinity() }
+                    .setNegativeButton("Cancelar", null)
+                    .show()
+            }
+        })
     }
 
     private fun generatePassword(config: GeneratorConfig): String {

@@ -107,7 +107,14 @@ class Baul_contrasenas : BaseActivity() {
         }
 
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() { finishAffinity() }
+            override fun handleOnBackPressed() {
+                com.google.android.material.dialog.MaterialAlertDialogBuilder(this@Baul_contrasenas)
+                    .setTitle("Salir de la App")
+                    .setMessage("¿Deseas salir de la App?")
+                    .setPositiveButton("Salir") { _, _ -> finishAffinity() }
+                    .setNegativeButton("Cancelar", null)
+                    .show()
+            }
         })
     }
 
