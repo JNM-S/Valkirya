@@ -2,6 +2,7 @@ package com.example.valkyria
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.OnBackPressedCallback
 import androidx.biometric.BiometricManager
 import com.google.android.material.switchmaterial.SwitchMaterial
 import androidx.activity.enableEdgeToEdge
@@ -117,5 +118,16 @@ class Configuracion : BaseActivity() {
             v.layoutParams = lp
             insets
         }
+
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                com.google.android.material.dialog.MaterialAlertDialogBuilder(this@Configuracion)
+                    .setTitle("Salir de la App")
+                    .setMessage("¿Deseas salir de la App?")
+                    .setPositiveButton("Salir") { _, _ -> finishAffinity() }
+                    .setNegativeButton("Cancelar", null)
+                    .show()
+            }
+        })
     }
 }
