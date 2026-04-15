@@ -12,7 +12,7 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
-class EditarContrasena : AppCompatActivity() {
+class EditarContrasena : BaseActivity() {
 
     private var selectedIconName = "ic_service_placeholder"
     private var selectedIconRes  = R.drawable.ic_service_placeholder

@@ -17,7 +17,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
-class DetallesContrasena : AppCompatActivity() {
+class DetallesContrasena : BaseActivity() {
 
     private var passwordVisible = false
     private var contrasena = ""

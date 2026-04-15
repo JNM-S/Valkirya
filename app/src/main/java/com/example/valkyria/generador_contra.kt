@@ -16,7 +16,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.switchmaterial.SwitchMaterial
 
-class generador_contra : AppCompatActivity() {
+class generador_contra : BaseActivity() {
 
     private data class GeneratorConfig(
         val length: Int = 12,

@@ -16,7 +16,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.util.Calendar
 
-class Baul_contrasenas : AppCompatActivity() {
+class Baul_contrasenas : BaseActivity() {
 
     private lateinit var adapter: PasswordAdapter
     private lateinit var recycler: RecyclerView

@@ -63,14 +63,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:fontFamily="@font/inter_font"
-            android:text="Erik Valkyrie"
+            android:text=""
             android:textColor="@color/text_primary"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/img_avatar"
-            tools:text="Erik Valkyrie" />
+            tools:text="Nombre usuario" />
 
         <TextView
             android:id="@+id/txt_email_header"
@@ -78,13 +78,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:fontFamily="@font/inter_font"
-            android:text="erik@valkyria.io"
+            android:text=""
             android:textColor="@color/azul_1"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txt_nombre_completo"
-            tools:text="erik@valkyria.io" />
+            tools:text="correo@ejemplo.com" />
 
         <!-- ===== SECCIÓN INFORMACIÓN PERSONAL ===== -->
         <TextView
@@ -142,7 +142,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:background="@null"
-                android:hint="erik_valkyrie"
                 android:inputType="text"
                 android:textColor="@color/text_primary"
                 android:textColorHint="#8A94A6" />
@@ -190,7 +189,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:background="@null"
-                android:hint="erik@valkyria.io"
                 android:inputType="textEmailAddress"
                 android:textColor="@color/text_primary"
                 android:textColorHint="#8A94A6" />
@@ -232,10 +230,12 @@
             app:layout_constraintTop_toBottomOf="@id/label_telefono_perfil">
 
             <LinearLayout
+                android:id="@+id/linear_numero_perfil"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:gravity="center_vertical"
                 android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/bg_entrada_redondeado"
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp">
 
@@ -289,7 +289,6 @@
             android:clickable="true"
             android:focusable="true"
             android:fontFamily="@font/inter_font"
-            android:foreground="?attr/selectableItemBackgroundBorderless"
             android:text="Guardar cambios"
             android:textColor="@color/text_primary"
             android:textSize="16sp"
@@ -308,13 +307,12 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="24dp"
-            android:background="@drawable/bg_boton_secundario"
+            android:background="@drawable/bg_boton_azul"
             android:clickable="true"
             android:focusable="true"
             android:fontFamily="@font/inter_font"
-            android:foreground="?attr/selectableItemBackgroundBorderless"
             android:text="Cambiar cuenta"
-            android:textColor="@color/text_primary"
+            android:textColor="@color/blanco"
             android:textSize="16sp"
             app:backgroundTint="@null"
             app:icon="@drawable/ic_switch_account"
@@ -333,11 +331,10 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="24dp"
-            android:background="@drawable/bg_boton_secundario"
+            android:background="@drawable/bg_boton_eliminar"
             android:clickable="true"
             android:focusable="true"
             android:fontFamily="@font/inter_font"
-            android:foreground="?attr/selectableItemBackgroundBorderless"
             android:text="Salir de la cuenta"
             android:textColor="@color/RED"
             android:textSize="16sp"

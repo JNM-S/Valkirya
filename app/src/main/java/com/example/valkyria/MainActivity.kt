@@ -20,7 +20,7 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,8 +65,10 @@ class MainActivity : AppCompatActivity() {
 
         if (logueado) {
             val biometricManager = BiometricManager.from(this)
+            val biometricEnabled = appPrefs.getBoolean("biometric_enabled", true)
 
-            if (biometricManager.canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_STRONG)
+            if (biometricEnabled &&
+                biometricManager.canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_STRONG)
                 == BiometricManager.BIOMETRIC_SUCCESS) {
 
                 biometricPrompt.authenticate(promptInfo)
@@ -147,6 +149,30 @@ class MainActivity : AppCompatActivity() {
 
             } else {
                 if (savedPassword == passText) {
+                    // Restaurar datos de perfil del usuario que inicia sesión
+                    val usuariosPrefs = getSharedPreferences("usuarios", MODE_PRIVATE)
+                    // Busca primero la clave persistente por correo, luego el valor activo actual
+                    val nombreGuardado = usuariosPrefs.getString("${emailText}_nombre", null)
+                        ?: usuariosPrefs.getString("nombre_usuario", "")
+                        ?: ""
+                    val telefonoGuardado = usuariosPrefs.getString("${emailText}_telefono", null)
+                        ?: usuariosPrefs.getString("telefono_usuario", "")
+                        ?: ""
+                    val prefijoGuardado = usuariosPrefs.getString("${emailText}_prefijo", null)
+                        ?: usuariosPrefs.getString("prefijo_usuario", "+57")
+                        ?: "+57"
+
+                    usuariosPrefs.edit()
+                        .putString("nombre_usuario",   nombreGuardado)
+                        .putString("correo_usuario",   emailText)
+                        .putString("telefono_usuario", telefonoGuardado)
+                        .putString("prefijo_usuario",  prefijoGuardado)
+                        // Asegurar que las claves persistentes queden guardadas para futuros logins
+                        .putString("${emailText}_nombre",   nombreGuardado)
+                        .putString("${emailText}_telefono", telefonoGuardado)
+                        .putString("${emailText}_prefijo",  prefijoGuardado)
+                        .apply()
+
                     getSharedPreferences("sesion", MODE_PRIVATE)
                         .edit()
                         .putBoolean("logueado", true)
@@ -161,25 +187,27 @@ class MainActivity : AppCompatActivity() {
             }
         }
         val btnBiometria = findViewById<ConstraintLayout>(R.id.btn_biometria)
+        val biometricEnabled = appPrefs.getBoolean("biometric_enabled", true)
 
-        btnBiometria.setOnClickListener {
+        if (!biometricEnabled) {
+            btnBiometria.visibility = android.view.View.GONE
+        } else {
+            btnBiometria.setOnClickListener {
+                val logueado = prefs.getBoolean("logueado", false)
 
-            val logueado = prefs.getBoolean("logueado", false)
+                if (!logueado) {
+                    Toast.makeText(this, "Primero inicia sesión", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
 
-            if (!logueado) {
-                Toast.makeText(this, "Primero inicia sesión", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
+                val biometricManager = BiometricManager.from(this)
 
-            val biometricManager = BiometricManager.from(this)
-
-            if (biometricManager.canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_STRONG)
-                == BiometricManager.BIOMETRIC_SUCCESS) {
-
-                biometricPrompt.authenticate(promptInfo)
-
-            } else {
-                Toast.makeText(this, "Biometría no disponible", Toast.LENGTH_SHORT).show()
+                if (biometricManager.canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_STRONG)
+                    == BiometricManager.BIOMETRIC_SUCCESS) {
+                    biometricPrompt.authenticate(promptInfo)
+                } else {
+                    Toast.makeText(this, "Biometría no disponible", Toast.LENGTH_SHORT).show()
+                }
             }
         }
 

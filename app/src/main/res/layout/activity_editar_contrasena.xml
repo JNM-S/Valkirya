@@ -55,17 +55,10 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_guardar_editar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Guardar"
-                        android:textAllCaps="false"
-                        android:fontFamily="@font/inter_font"
-                        android:textColor="@color/text_primary"
-                        android:textSize="14sp"
-                        app:backgroundTint="@color/azul_1"
-                        app:cornerRadius="8dp" />
+                    <!-- Espaciador para centrar el título -->
+                    <View
+                        android:layout_width="38dp"
+                        android:layout_height="38dp" />
                 </LinearLayout>
 
                 <!-- Ícono selector -->
@@ -189,6 +182,23 @@
                             android:inputType="textPassword"
                             android:singleLine="true" />
                     </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_guardar_editar"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginBottom="8dp"
+                        android:text="Guardar"
+                        android:textAllCaps="false"
+                        android:fontFamily="@font/inter_font"
+                        android:textColor="@color/text_primary"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:background="@drawable/bg_boton_ingresar"
+                        app:backgroundTint="@null"
+                        app:rippleColor="@android:color/transparent" />
 
                 </LinearLayout>
             </LinearLayout>

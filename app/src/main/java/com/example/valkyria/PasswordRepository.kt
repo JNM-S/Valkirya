@@ -6,7 +6,6 @@ import org.json.JSONObject
 
 object PasswordRepository {
 
-    private const val PREFS_NAME = "vault_prefs"
     private const val KEY_PASSWORDS = "saved_passwords"
 
     val ICON_MAP = mapOf(
@@ -21,8 +20,15 @@ object PasswordRepository {
         "ic_service_placeholder" to R.drawable.ic_service_placeholder
     )
 
+    // Clave de prefs única por usuario (basada en su correo)
+    private fun prefsName(context: Context): String {
+        val correo = context.getSharedPreferences("usuarios", Context.MODE_PRIVATE)
+            .getString("correo_usuario", "default") ?: "default"
+        return "vault_${correo.replace("@", "_").replace(".", "_")}"
+    }
+
     fun save(context: Context, item: PasswordItem, iconName: String) {
-        val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        val prefs = context.getSharedPreferences(prefsName(context), Context.MODE_PRIVATE)
         val array = loadJsonArray(prefs)
         val now = System.currentTimeMillis()
         array.put(JSONObject().apply {
@@ -37,7 +43,7 @@ object PasswordRepository {
     }
 
     fun update(context: Context, originalNombre: String, originalUsuario: String, item: PasswordItem, iconName: String) {
-        val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        val prefs = context.getSharedPreferences(prefsName(context), Context.MODE_PRIVATE)
         val array = loadJsonArray(prefs)
         val newArray = JSONArray()
         for (i in 0 until array.length()) {
@@ -59,7 +65,7 @@ object PasswordRepository {
     }
 
     fun delete(context: Context, nombre: String, usuario: String) {
-        val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        val prefs = context.getSharedPreferences(prefsName(context), Context.MODE_PRIVATE)
         val array = loadJsonArray(prefs)
         val newArray = JSONArray()
         for (i in 0 until array.length()) {
@@ -72,7 +78,7 @@ object PasswordRepository {
     }
 
     fun load(context: Context): List<PasswordItem> {
-        val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        val prefs = context.getSharedPreferences(prefsName(context), Context.MODE_PRIVATE)
         val array = loadJsonArray(prefs)
         val result = mutableListOf<PasswordItem>()
         for (i in 0 until array.length()) {

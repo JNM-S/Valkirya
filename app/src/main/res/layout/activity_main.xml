@@ -193,7 +193,6 @@
             android:clickable="true"
             android:focusable="true"
             android:fontFamily="@font/inter_font"
-            android:foreground="?attr/selectableItemBackgroundBorderless"
             android:text="Ingresar"
 
             android:textColor="@color/text_primary"
