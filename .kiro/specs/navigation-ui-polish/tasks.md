@@ -45,3 +45,4 @@
   - [x] 9.4 Implementar validación: si el usuario intenta desactivar el último switch activo, revertir y mostrar `Toast`
   - [x] 9.5 Conectar botón copiar al `ClipboardManager` (mismo patrón que `PasswordAdapter`)
   - [x] 9.6 Conectar botón refresh para llamar a `generatePassword` y actualizar el `TextView`
+w

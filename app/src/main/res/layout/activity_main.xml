@@ -259,14 +259,12 @@
             android:layout_marginTop="30dp"
             android:layout_marginEnd="24dp"
             android:background="@drawable/gb_boton_biometrico"
-
             android:clickable="true"
             android:focusable="true"
-            android:foreground="?attr/selectableItemBackgroundBorderless"
-
+            app:backgroundTint="@null"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/texto_continuar">
+            app:layout_constraintTop_toBottomOf="@id/texto_continuar" >
 
 
             <ImageView
