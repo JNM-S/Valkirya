@@ -51,14 +51,26 @@ class Recuperacion_contrasenas : BaseActivity() {
             } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email2Text).matches()) {
                 layoutEmail2.error = "Correo inválido"
             } else {
-                MaterialAlertDialogBuilder(this)
-                    .setTitle("Recuperación de contraseña")
-                    .setMessage("Te hemos enviado un correo para recuperar tu contraseña. Revisa tu bandeja de entrada o de spam")
-                    .setCancelable(false)
-                    .setPositiveButton("Aceptar") { dialog, _ ->
-                        dialog.dismiss()
+                com.google.firebase.auth.FirebaseAuth.getInstance()
+                    .sendPasswordResetEmail(email2Text)
+                    .addOnSuccessListener {
+                        MaterialAlertDialogBuilder(this)
+                            .setTitle("Recuperación de contraseña")
+                            .setMessage("Te hemos enviado un correo a $email2Text con las instrucciones para recuperar tu contraseña. Revisa tu bandeja de entrada o de spam.")
+                            .setCancelable(false)
+                            .setPositiveButton("Aceptar") { dialog, _ ->
+                                dialog.dismiss()
+                                finish()
+                            }
+                            .show()
                     }
-                    .show()
+                    .addOnFailureListener { e ->
+                        MaterialAlertDialogBuilder(this)
+                            .setTitle("Error")
+                            .setMessage(e.localizedMessage ?: "No se pudo enviar el correo")
+                            .setPositiveButton("Aceptar", null)
+                            .show()
+                    }
             }
         }
 

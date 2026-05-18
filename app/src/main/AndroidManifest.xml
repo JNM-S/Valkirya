@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".ValkyriaApp"
@@ -18,16 +19,13 @@
             android:name=".AutoLock"
             android:exported="false" />
         <activity
-            android:name=".config"
+            android:name=".Verificacion2FA"
             android:exported="false" />
         <activity
             android:name=".Configuracion"
             android:exported="false" />
         <activity
             android:name=".generador_contra"
-            android:exported="false" />
-        <activity
-            android:name=".Editor_contrasena"
             android:exported="false" />
         <activity
             android:name=".Baul_contrasenas"

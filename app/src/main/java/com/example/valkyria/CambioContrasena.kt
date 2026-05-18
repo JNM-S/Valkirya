@@ -10,6 +10,7 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import com.google.firebase.auth.FirebaseAuth
 
 class CambioContrasena : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,12 +24,10 @@ class CambioContrasena : BaseActivity() {
             insets
         }
 
-        // Botón volver
         findViewById<android.widget.ImageView>(R.id.btn_back_cambio).setOnClickListener {
             finish()
         }
 
-        // Link volver a configuración
         findViewById<android.widget.TextView>(R.id.link_volver_config).setOnClickListener {
             finish()
         }
@@ -36,6 +35,10 @@ class CambioContrasena : BaseActivity() {
         val email = findViewById<TextInputEditText>(R.id.entrada_email_cambio)
         val layoutEmail = findViewById<TextInputLayout>(R.id.layout_email_cambio)
         val boton = findViewById<MaterialButton>(R.id.btn_enviar_cambio)
+
+        // Pre-llenar con el correo del usuario actual
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        currentUser?.email?.let { email.setText(it) }
 
         email.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) { layoutEmail.error = null }
@@ -50,14 +53,26 @@ class CambioContrasena : BaseActivity() {
             } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(emailText).matches()) {
                 layoutEmail.error = "Correo inválido"
             } else {
-                MaterialAlertDialogBuilder(this)
-                    .setTitle("Cambio de contraseña")
-                    .setMessage("Te hemos enviado un correo con las instrucciones para cambiar tu contraseña. Revisa tu bandeja de entrada o de spam.")
-                    .setCancelable(false)
-                    .setPositiveButton("Aceptar") { dialog, _ ->
-                        dialog.dismiss()
+                // Enviar correo real de cambio de contraseña via Firebase
+                FirebaseAuth.getInstance().sendPasswordResetEmail(emailText)
+                    .addOnSuccessListener {
+                        MaterialAlertDialogBuilder(this)
+                            .setTitle("Cambio de contraseña")
+                            .setMessage("Te hemos enviado un correo a $emailText con las instrucciones para cambiar tu contraseña. Revisa tu bandeja de entrada o de spam.")
+                            .setCancelable(false)
+                            .setPositiveButton("Aceptar") { dialog, _ ->
+                                dialog.dismiss()
+                                finish()
+                            }
+                            .show()
                     }
-                    .show()
+                    .addOnFailureListener { e ->
+                        MaterialAlertDialogBuilder(this)
+                            .setTitle("Error")
+                            .setMessage(e.localizedMessage ?: "No se pudo enviar el correo")
+                            .setPositiveButton("Aceptar", null)
+                            .show()
+                    }
             }
         }
     }

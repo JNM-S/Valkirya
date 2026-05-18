@@ -206,6 +206,17 @@
             app:layout_constraintTop_toBottomOf="@id/txt_olvido_contraseña"
             app:rippleColor="@android:color/transparent" />
 
+        <ProgressBar
+            android:id="@+id/progress_login"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:visibility="gone"
+            android:indeterminateTint="@color/blanco"
+            app:layout_constraintTop_toTopOf="@id/btn_ingresar"
+            app:layout_constraintBottom_toBottomOf="@id/btn_ingresar"
+            app:layout_constraintStart_toStartOf="@id/btn_ingresar"
+            app:layout_constraintEnd_toEndOf="@id/btn_ingresar" />
+
         <View
             android:id="@+id/linea_izquierda"
             android:layout_width="0dp"
@@ -301,6 +312,29 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_google"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:text="Continuar con Google"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"
+            android:fontFamily="@font/inter_font"
+            app:backgroundTint="@color/bg_card"
+            app:cornerRadius="16dp"
+            app:icon="@drawable/google"
+            app:iconGravity="textStart"
+            app:iconPadding="16dp"
+            app:iconTint="@null"
+            app:layout_constraintTop_toBottomOf="@id/btn_biometria"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
         <TextView
             android:id="@+id/txt_registro"
             android:layout_width="wrap_content"
@@ -314,7 +348,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
 
-            app:layout_constraintTop_toBottomOf="@id/btn_biometria" />
+            app:layout_constraintTop_toBottomOf="@id/btn_google"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

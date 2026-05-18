@@ -158,27 +158,28 @@ class crearCuenta : BaseActivity() {
             }
 
 
-            val prefs = getSharedPreferences("usuarios", MODE_PRIVATE)
+            // Crear cuenta en Firebase Auth
+            val prefijoText = prefijo.text.toString().trim()
+            com.google.firebase.auth.FirebaseAuth.getInstance()
+                .createUserWithEmailAndPassword(correoccText, passccText)
+                .addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful) {
+                        // Enviar correo de verificación
+                        val user = com.google.firebase.auth.FirebaseAuth.getInstance().currentUser
+                        user?.sendEmailVerification()
 
-            prefs.edit()
-                // Datos activos del usuario actual
-                .putString("nombre_usuario", usuarioText)
-                .putString("correo_usuario", correoccText)
-                .putString("telefono_usuario", telefonoText)
-                .putString("prefijo_usuario", prefijo.text.toString().trim())
-                // Datos persistentes por correo (para restaurar al hacer login)
-                .putString("${correoccText}_nombre", usuarioText)
-                .putString("${correoccText}_telefono", telefonoText)
-                .putString("${correoccText}_prefijo", prefijo.text.toString().trim())
-                // Contraseña
-                .putString(correoccText, passccText)
-                .apply()
+                        // Guardar perfil en Firestore
+                        PasswordRepository.saveProfile(usuarioText, correoccText, telefonoText, prefijoText)
 
-            val intent = Intent(this, Verificacion::class.java)
-            intent.putExtra("email", correoccText)
-            intent.putExtra("password", passccText)
-
-            startActivity(intent)
+                        val intent = Intent(this, Verificacion::class.java)
+                        intent.putExtra("email", correoccText)
+                        intent.putExtra("password", passccText)
+                        startActivity(intent)
+                    } else {
+                        val errorMsg = task.exception?.localizedMessage ?: "Error al crear cuenta"
+                        android.widget.Toast.makeText(this, errorMsg, android.widget.Toast.LENGTH_LONG).show()
+                    }
+                }
         }
 
 

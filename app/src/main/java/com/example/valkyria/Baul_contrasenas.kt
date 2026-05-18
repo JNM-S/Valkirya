@@ -51,15 +51,22 @@ class Baul_contrasenas : BaseActivity() {
         }
 
         val saludoTxt = findViewById<TextView>(R.id.txt_saludo)
-        val prefs = getSharedPreferences("usuarios", MODE_PRIVATE)
-        val nombre = prefs.getString("nombre_usuario", "Usuario")
         val hora = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
         val saludo = when {
             hora in 6..11  -> "Buenos días"
             hora in 12..18 -> "Buenas tardes"
             else           -> "Buenas noches"
         }
-        saludoTxt.text = "$saludo, \n$nombre"
+
+        // Cargar nombre desde Firestore
+        val firebaseUser = com.google.firebase.auth.FirebaseAuth.getInstance().currentUser
+        val nombreDefault = firebaseUser?.displayName ?: "Usuario"
+        saludoTxt.text = "$saludo, \n$nombreDefault"
+
+        PasswordRepository.loadProfile { nombre, _, _, _ ->
+            val displayName = nombre.ifEmpty { nombreDefault }
+            saludoTxt.text = "$saludo, \n$displayName"
+        }
 
         val botonGenerador = findViewById<FloatingActionButton>(R.id.btn_add)
         botonGenerador.setOnClickListener {
@@ -120,10 +127,10 @@ class Baul_contrasenas : BaseActivity() {
 
     override fun onResume() {
         super.onResume()
-        // Recargar lista cada vez que la Activity vuelve al frente
-        // (después de eliminar en Detalles, o de guardar desde el Generador)
-        val lista = PasswordRepository.load(this)
-        adapter.actualizarLista(lista)
+        // Recargar lista desde Firestore
+        PasswordRepository.load(this) { lista ->
+            adapter.actualizarLista(lista)
+        }
         buscador.text?.clear()
     }
 }

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import android.content.Intent
 import android.os.Bundle
 import android.view.MotionEvent
+import com.google.firebase.auth.FirebaseAuth
 
 open class BaseActivity : AppCompatActivity() {
 
@@ -26,6 +27,34 @@ open class BaseActivity : AppCompatActivity() {
         // No verificar en MainActivity ni en AutoLock
         if (this is MainActivity || this is AutoLock) return
 
+        // Verificar que el usuario sigue existiendo en Firebase
+        val user = FirebaseAuth.getInstance().currentUser
+        if (user != null) {
+            user.reload().addOnFailureListener {
+                // El usuario fue eliminado o deshabilitado en Firebase
+                FirebaseAuth.getInstance().signOut()
+                getSharedPreferences("sesion", MODE_PRIVATE).edit()
+                    .putBoolean("logueado", false)
+                    .apply()
+                val intent = Intent(this, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+            }
+
+            // Verificar que esta sesión sigue activa
+            SessionManager.isSessionActive(this) { active ->
+                if (!active) {
+                    FirebaseAuth.getInstance().signOut()
+                    getSharedPreferences("sesion", MODE_PRIVATE).edit()
+                        .putBoolean("logueado", false)
+                        .apply()
+                    val intent = Intent(this, MainActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(intent)
+                }
+            }
+        }
+
         val prefs = getSharedPreferences("app_prefs", MODE_PRIVATE)
         val autoLock = prefs.getString("auto_lock", "nunca")
         if (autoLock == "nunca") return
@@ -40,10 +69,10 @@ open class BaseActivity : AppCompatActivity() {
 
         val tiempoInactivo = System.currentTimeMillis() - ultimaInteraccion
         if (tiempoInactivo >= limiteMs) {
-            // Marcar como deslogueado y volver al login
             getSharedPreferences("sesion", MODE_PRIVATE).edit()
                 .putBoolean("logueado", false)
                 .apply()
+            FirebaseAuth.getInstance().signOut()
             val intent = Intent(this, MainActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
@@ -51,7 +80,6 @@ open class BaseActivity : AppCompatActivity() {
     }
 
     override fun dispatchTouchEvent(ev: android.view.MotionEvent?): Boolean {
-        // Actualizar tiempo de última interacción en cualquier toque
         ultimaInteraccion = System.currentTimeMillis()
         return super.dispatchTouchEvent(ev)
     }

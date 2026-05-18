@@ -1,12 +1,11 @@
 package com.example.valkyria
 
 import android.content.Context
-import org.json.JSONArray
-import org.json.JSONObject
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 
 object PasswordRepository {
-
-    private const val KEY_PASSWORDS = "saved_passwords"
 
     val ICON_MAP = mapOf(
         "ic_gmail"               to R.drawable.ic_gmail,
@@ -20,87 +19,145 @@ object PasswordRepository {
         "ic_service_placeholder" to R.drawable.ic_service_placeholder
     )
 
-    // Clave de prefs única por usuario (basada en su correo)
-    private fun prefsName(context: Context): String {
-        val correo = context.getSharedPreferences("usuarios", Context.MODE_PRIVATE)
-            .getString("correo_usuario", "default") ?: "default"
-        return "vault_${correo.replace("@", "_").replace(".", "_")}"
-    }
+    private fun getUserId(): String? = FirebaseAuth.getInstance().currentUser?.uid
+
+    private fun passwordsCollection() =
+        getUserId()?.let { uid ->
+            FirebaseFirestore.getInstance()
+                .collection("users")
+                .document(uid)
+                .collection("passwords")
+        }
 
     fun save(context: Context, item: PasswordItem, iconName: String) {
-        val prefs = context.getSharedPreferences(prefsName(context), Context.MODE_PRIVATE)
-        val array = loadJsonArray(prefs)
+        val collection = passwordsCollection() ?: return
         val now = System.currentTimeMillis()
-        array.put(JSONObject().apply {
-            put("nombre",            item.nombre)
-            put("usuario",           item.usuario)
-            put("contrasena",        item.contrasena)
-            put("iconName",          iconName)
-            put("fechaCreacion",     now)
-            put("fechaModificacion", now)
-        })
-        prefs.edit().putString(KEY_PASSWORDS, array.toString()).apply()
+        val data = hashMapOf(
+            "nombre"            to item.nombre,
+            "usuario"           to item.usuario,
+            "contrasena"        to item.contrasena,
+            "iconName"          to iconName,
+            "fechaCreacion"     to now,
+            "fechaModificacion" to now
+        )
+        collection.add(data)
     }
 
     fun update(context: Context, originalNombre: String, originalUsuario: String, item: PasswordItem, iconName: String) {
-        val prefs = context.getSharedPreferences(prefsName(context), Context.MODE_PRIVATE)
-        val array = loadJsonArray(prefs)
-        val newArray = JSONArray()
-        for (i in 0 until array.length()) {
-            val obj = array.getJSONObject(i)
-            if (obj.getString("nombre") == originalNombre && obj.getString("usuario") == originalUsuario) {
-                newArray.put(JSONObject().apply {
-                    put("nombre",            item.nombre)
-                    put("usuario",           item.usuario)
-                    put("contrasena",        item.contrasena)
-                    put("iconName",          iconName)
-                    put("fechaCreacion",     obj.optLong("fechaCreacion", System.currentTimeMillis()))
-                    put("fechaModificacion", System.currentTimeMillis())
-                })
-            } else {
-                newArray.put(obj)
+        val collection = passwordsCollection() ?: return
+        collection
+            .whereEqualTo("nombre", originalNombre)
+            .whereEqualTo("usuario", originalUsuario)
+            .get()
+            .addOnSuccessListener { docs ->
+                for (doc in docs) {
+                    doc.reference.update(
+                        mapOf(
+                            "nombre"            to item.nombre,
+                            "usuario"           to item.usuario,
+                            "contrasena"        to item.contrasena,
+                            "iconName"          to iconName,
+                            "fechaModificacion" to System.currentTimeMillis()
+                        )
+                    )
+                }
             }
-        }
-        prefs.edit().putString(KEY_PASSWORDS, newArray.toString()).apply()
     }
 
     fun delete(context: Context, nombre: String, usuario: String) {
-        val prefs = context.getSharedPreferences(prefsName(context), Context.MODE_PRIVATE)
-        val array = loadJsonArray(prefs)
-        val newArray = JSONArray()
-        for (i in 0 until array.length()) {
-            val obj = array.getJSONObject(i)
-            if (obj.getString("nombre") != nombre || obj.getString("usuario") != usuario) {
-                newArray.put(obj)
+        val collection = passwordsCollection() ?: return
+        collection
+            .whereEqualTo("nombre", nombre)
+            .whereEqualTo("usuario", usuario)
+            .get()
+            .addOnSuccessListener { docs ->
+                for (doc in docs) {
+                    doc.reference.delete()
+                }
             }
-        }
-        prefs.edit().putString(KEY_PASSWORDS, newArray.toString()).apply()
     }
 
+    /**
+     * Carga las contraseñas de forma asíncrona.
+     * Usa el callback para recibir la lista cuando esté lista.
+     */
+    fun load(context: Context, callback: (List<PasswordItem>) -> Unit) {
+        val collection = passwordsCollection()
+        if (collection == null) {
+            callback(emptyList())
+            return
+        }
+        collection
+            .orderBy("fechaModificacion", Query.Direction.DESCENDING)
+            .get()
+            .addOnSuccessListener { docs ->
+                val result = docs.map { doc ->
+                    val iconName = doc.getString("iconName") ?: "ic_service_placeholder"
+                    PasswordItem(
+                        nombre            = doc.getString("nombre") ?: "",
+                        usuario           = doc.getString("usuario") ?: "",
+                        contrasena        = doc.getString("contrasena") ?: "",
+                        icono             = ICON_MAP[iconName] ?: R.drawable.ic_service_placeholder,
+                        fechaCreacion     = doc.getLong("fechaCreacion") ?: System.currentTimeMillis(),
+                        fechaModificacion = doc.getLong("fechaModificacion") ?: System.currentTimeMillis(),
+                        iconName          = iconName
+                    )
+                }
+                callback(result)
+            }
+            .addOnFailureListener {
+                callback(emptyList())
+            }
+    }
+
+    /**
+     * Versión síncrona para compatibilidad — carga desde caché local de Firestore.
+     * Preferir la versión con callback.
+     */
     fun load(context: Context): List<PasswordItem> {
-        val prefs = context.getSharedPreferences(prefsName(context), Context.MODE_PRIVATE)
-        val array = loadJsonArray(prefs)
-        val result = mutableListOf<PasswordItem>()
-        for (i in 0 until array.length()) {
-            val obj = array.getJSONObject(i)
-            val iconName = obj.optString("iconName", "ic_service_placeholder")
-            result.add(
-                PasswordItem(
-                    nombre            = obj.getString("nombre"),
-                    usuario           = obj.getString("usuario"),
-                    contrasena        = obj.optString("contrasena", ""),
-                    icono             = ICON_MAP[iconName] ?: R.drawable.ic_service_placeholder,
-                    fechaCreacion     = obj.optLong("fechaCreacion", System.currentTimeMillis()),
-                    fechaModificacion = obj.optLong("fechaModificacion", System.currentTimeMillis()),
-                    iconName          = iconName
-                )
-            )
-        }
-        return result
+        // Retorna lista vacía — las Activities deben migrar a la versión con callback
+        return emptyList()
     }
 
-    private fun loadJsonArray(prefs: android.content.SharedPreferences): JSONArray {
-        val raw = prefs.getString(KEY_PASSWORDS, null) ?: return JSONArray()
-        return try { JSONArray(raw) } catch (e: Exception) { JSONArray() }
+    /**
+     * Guarda el perfil del usuario en Firestore.
+     */
+    fun saveProfile(nombre: String, correo: String, telefono: String, prefijo: String) {
+        val uid = getUserId() ?: return
+        val data = hashMapOf(
+            "nombre"   to nombre,
+            "correo"   to correo,
+            "telefono" to telefono,
+            "prefijo"  to prefijo
+        )
+        FirebaseFirestore.getInstance()
+            .collection("users")
+            .document(uid)
+            .set(data, com.google.firebase.firestore.SetOptions.merge())
+    }
+
+    /**
+     * Carga el perfil del usuario desde Firestore.
+     */
+    fun loadProfile(callback: (nombre: String, correo: String, telefono: String, prefijo: String) -> Unit) {
+        val uid = getUserId() ?: run {
+            callback("", "", "", "+57")
+            return
+        }
+        FirebaseFirestore.getInstance()
+            .collection("users")
+            .document(uid)
+            .get()
+            .addOnSuccessListener { doc ->
+                callback(
+                    doc.getString("nombre") ?: "",
+                    doc.getString("correo") ?: "",
+                    doc.getString("telefono") ?: "",
+                    doc.getString("prefijo") ?: "+57"
+                )
+            }
+            .addOnFailureListener {
+                callback("", "", "", "+57")
+            }
     }
 }

@@ -10,7 +10,6 @@ import android.text.style.ForegroundColorSpan
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
@@ -19,9 +18,17 @@ import androidx.core.content.ContextCompat
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
+import androidx.activity.result.contract.ActivityResultContracts
 
 class MainActivity : BaseActivity() {
-
+    private lateinit var googleSignInClient: GoogleSignInClient
+    private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -35,6 +42,15 @@ class MainActivity : BaseActivity() {
         )
 
         setContentView(R.layout.activity_main)
+
+        auth = FirebaseAuth.getInstance()
+
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+
+        googleSignInClient = GoogleSignIn.getClient(this, gso)
 
         val prefs = getSharedPreferences("sesion", MODE_PRIVATE)
         val logueado = prefs.getBoolean("logueado", false)
@@ -78,9 +94,25 @@ class MainActivity : BaseActivity() {
         val email = findViewById<TextInputEditText>(R.id.entrada_email_edit)
         val password = findViewById<TextInputEditText>(R.id.entrada_contrasena_edit)
         val boton = findViewById<MaterialButton>(R.id.btn_ingresar)
+        val btnGoogle = findViewById<MaterialButton>(R.id.btn_google)
+        val progressLogin = findViewById<android.widget.ProgressBar>(R.id.progress_login)
 
         val layoutEmail = findViewById<TextInputLayout>(R.id.layout_email)
         val layoutPassword = findViewById<TextInputLayout>(R.id.layout_contrasena)
+
+        fun setLoading(loading: Boolean) {
+            if (loading) {
+                boton.text = ""
+                boton.isEnabled = false
+                btnGoogle.isEnabled = false
+                progressLogin.visibility = android.view.View.VISIBLE
+            } else {
+                boton.text = "Ingresar"
+                boton.isEnabled = true
+                btnGoogle.isEnabled = true
+                progressLogin.visibility = android.view.View.GONE
+            }
+        }
 
 
         email.addTextChangedListener(object : TextWatcher {
@@ -89,13 +121,10 @@ class MainActivity : BaseActivity() {
 
                 val texto = s.toString().trim()
 
-                val prefsUsuarios = getSharedPreferences("usuarios", MODE_PRIVATE)
-
                 if (!android.util.Patterns.EMAIL_ADDRESS.matcher(texto).matches()) {
                     boton.text = "Ingresar"
                 } else {
-                    val existe = prefsUsuarios.contains(texto)
-                    boton.text = if (existe) "Ingresar" else "Crear cuenta"
+                    boton.text = "Ingresar"
                 }
 
                 when {
@@ -121,6 +150,12 @@ class MainActivity : BaseActivity() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })
 
+        btnGoogle.setOnClickListener {
+
+            val signInIntent = googleSignInClient.signInIntent
+            launcher.launch(signInIntent)
+        }
+
         boton.setOnClickListener {
 
             val emailText = email.text.toString().trim()
@@ -136,55 +171,71 @@ class MainActivity : BaseActivity() {
                 return@setOnClickListener
             }
 
-            val prefs = getSharedPreferences("usuarios", MODE_PRIVATE)
-            val savedPassword = prefs.getString(emailText, null)
+            // Login con Firebase Auth — primero verificar si el usuario existe
+            setLoading(true)
+            auth.fetchSignInMethodsForEmail(emailText)
+                .addOnCompleteListener(this) { fetchTask ->
+                    val methods = fetchTask.result?.signInMethods
+                    if (fetchTask.isSuccessful && (methods == null || methods.isEmpty())) {
+                        // El usuario no existe
+                        setLoading(false)
+                        Toast.makeText(this, "La cuenta no existe. Regístrate para continuar.", Toast.LENGTH_LONG).show()
+                        val intent = Intent(this, crearCuenta::class.java)
+                        intent.putExtra("email", emailText)
+                        startActivity(intent)
+                    } else {
+                        // El usuario existe, intentar login
+                        auth.signInWithEmailAndPassword(emailText, passText)
+                            .addOnCompleteListener(this) { task ->
+                                if (task.isSuccessful) {
+                                    val user = auth.currentUser
+                                    // Verificar 2FA desde Firestore
+                                    val uid = user?.uid
+                                    if (uid != null) {
+                                        com.google.firebase.firestore.FirebaseFirestore.getInstance()
+                                            .collection("users").document(uid).get()
+                                            .addOnSuccessListener { doc ->
+                                                val is2FAEnabled = doc.getBoolean("2fa_enabled") ?: false
 
-            if (savedPassword == null) {
-                Toast.makeText(this, "Usuario no existe, crea una cuenta", Toast.LENGTH_SHORT)
-                    .show()
-
-                val intent = Intent(this, crearCuenta::class.java)
-                intent.putExtra("email", emailText)
-                startActivity(intent)
-
-            } else {
-                if (savedPassword == passText) {
-                    // Restaurar datos de perfil del usuario que inicia sesión
-                    val usuariosPrefs = getSharedPreferences("usuarios", MODE_PRIVATE)
-                    // Busca primero la clave persistente por correo, luego el valor activo actual
-                    val nombreGuardado = usuariosPrefs.getString("${emailText}_nombre", null)
-                        ?: usuariosPrefs.getString("nombre_usuario", "")
-                        ?: ""
-                    val telefonoGuardado = usuariosPrefs.getString("${emailText}_telefono", null)
-                        ?: usuariosPrefs.getString("telefono_usuario", "")
-                        ?: ""
-                    val prefijoGuardado = usuariosPrefs.getString("${emailText}_prefijo", null)
-                        ?: usuariosPrefs.getString("prefijo_usuario", "+57")
-                        ?: "+57"
-
-                    usuariosPrefs.edit()
-                        .putString("nombre_usuario",   nombreGuardado)
-                        .putString("correo_usuario",   emailText)
-                        .putString("telefono_usuario", telefonoGuardado)
-                        .putString("prefijo_usuario",  prefijoGuardado)
-                        // Asegurar que las claves persistentes queden guardadas para futuros logins
-                        .putString("${emailText}_nombre",   nombreGuardado)
-                        .putString("${emailText}_telefono", telefonoGuardado)
-                        .putString("${emailText}_prefijo",  prefijoGuardado)
-                        .apply()
-
-                    getSharedPreferences("sesion", MODE_PRIVATE)
-                        .edit()
-                        .putBoolean("logueado", true)
-                        .apply()
-
-                    val intent = Intent(this, Baul_contrasenas::class.java)
-                    startActivity(intent)
-
-                } else {
-                    layoutPassword.error = "Contraseña incorrecta"
+                                                if (is2FAEnabled) {
+                                                    // 2FA activo — ir a pantalla de código
+                                                    startActivity(Intent(this, Verificacion2FA::class.java))
+                                                } else {
+                                                    getSharedPreferences("sesion", MODE_PRIVATE)
+                                                        .edit()
+                                                        .putBoolean("logueado", true)
+                                                        .apply()
+                                                    SessionManager.registerSession(this)
+                                                    startActivity(Intent(this, Baul_contrasenas::class.java))
+                                                    finish()
+                                                }
+                                            }
+                                            .addOnFailureListener {
+                                                // Si falla Firestore, dejar pasar
+                                                getSharedPreferences("sesion", MODE_PRIVATE)
+                                                    .edit()
+                                                    .putBoolean("logueado", true)
+                                                    .apply()
+                                                SessionManager.registerSession(this)
+                                                startActivity(Intent(this, Baul_contrasenas::class.java))
+                                                finish()
+                                            }
+                                    } else {
+                                        getSharedPreferences("sesion", MODE_PRIVATE)
+                                            .edit()
+                                            .putBoolean("logueado", true)
+                                            .apply()
+                                        SessionManager.registerSession(this)
+                                        startActivity(Intent(this, Baul_contrasenas::class.java))
+                                        finish()
+                                    }
+                                } else {
+                                    setLoading(false)
+                                    layoutPassword.error = "Contraseña incorrecta"
+                                }
+                            }
+                    }
                 }
-            }
         }
         val btnBiometria = findViewById<ConstraintLayout>(R.id.btn_biometria)
         val biometricEnabled = appPrefs.getBoolean("biometric_enabled", true)
@@ -237,4 +288,65 @@ class MainActivity : BaseActivity() {
 
         texto.text = spannable
     }
+    private val launcher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+
+            val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
+
+            try {
+
+                val account = task.getResult(ApiException::class.java)
+
+                val credential = GoogleAuthProvider.getCredential(account.idToken, null)
+
+                auth.signInWithCredential(credential)
+                    .addOnCompleteListener(this) { authTask ->
+
+                        if (authTask.isSuccessful) {
+
+                            val user = auth.currentUser
+
+                            // Guardar perfil en Firestore
+                            PasswordRepository.saveProfile(
+                                user?.displayName ?: "",
+                                user?.email ?: "",
+                                "",
+                                "+57"
+                            )
+
+                            getSharedPreferences("sesion", MODE_PRIVATE)
+                                .edit()
+                                .putBoolean("logueado", true)
+                                .apply()
+
+                            SessionManager.registerSession(this)
+
+                            Toast.makeText(
+                                this,
+                                "Bienvenido ${user?.displayName}",
+                                Toast.LENGTH_SHORT
+                            ).show()
+
+                            startActivity(Intent(this, Baul_contrasenas::class.java))
+                            finish()
+
+                        } else {
+
+                            Toast.makeText(
+                                this,
+                                "Error de autenticación",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+
+            } catch (e: ApiException) {
+
+                Toast.makeText(
+                    this,
+                    "Error: ${e.statusCode}",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
 }
